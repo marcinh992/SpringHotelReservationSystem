@@ -1,0 +1,33 @@
+package pl.overlook.springhotelreservation.domain.reservation;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import pl.overlook.springhotelreservation.domain.guest.GuestService;
+import pl.overlook.springhotelreservation.domain.room.RoomService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class ReservationService {
+
+    @Autowired
+    GuestService guestService;
+    @Autowired
+    RoomService roomService;
+    @Autowired
+    ReservationRepository repository;
+
+    public void createNewReservation(Reservation reservation){
+
+
+
+        repository.save(reservation);
+    }
+
+    public List<Reservation> getAllReservations() {
+    List<Reservation> reservations = new ArrayList<>();
+    reservations.addAll(repository.findAll());
+    return reservations;
+    }
+}

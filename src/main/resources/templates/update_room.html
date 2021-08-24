@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edycja pokój</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+    <form class="form-horizontal" th:object="${room}" th:action="@{/rooms}" th:method="post">
+
+        <input type="hidden" th:field="*{id}"/>
+
+        <div class="form-group">
+            <label class="control-label">Numer pokoju:</label>
+            <input type="text" class="form-control" th:field="*{number}"/>
+            <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Rodzaj łóżka w pokoju:</label>
+            <select th:field="*{beds}">
+                <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType).values()}"
+                        th:value="${bedOpt}" th:text="${bedOpt}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Liczba łazienek w pokoju:</label>
+            <input type="number" class="form-control" th:field="*{bathrooms}"/>
+            <p th:if="${#fields.hasErrors('bathrooms')}" th:errors="*{bathrooms}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Widok z pokoju:</label>
+            <input type="number" class="form-control" th:field="*{view}"/>
+            <p th:if="${#fields.hasErrors('view')}" th:errors="*{view}"/>
+        </div>
+
+        <div class="row">
+            <button type="submit" class="btn btn-default">Utwórz pokój</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

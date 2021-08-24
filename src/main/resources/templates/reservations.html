@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reservations list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Od</td>
+            <td>Do</td>
+            <td>ID Pokoju</td>
+            <td>ID Gościa</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservation : ${reservations}">
+            <td th:text="${reservation.getFromDate()}"></td>
+            <td th:text="${reservation.getToDate()}"></td>
+            <td th:text="${reservation.getRoom().getId()}"></td>
+            <td th:text="${reservation.getGuest().getId()}"></td>
+            <td><a th:href="${'/reservation/delete/'+reservation.getId()}">Usuń</a></td>
+            <td><a th:href="${'/reservationUpdateForm/'+reservation.getId()}">Edytuj</a> </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <a href="/newreservation">Dodaj nową rezerwacje</a>
+    </div>
+</div>
+
+</body>
+</html>
