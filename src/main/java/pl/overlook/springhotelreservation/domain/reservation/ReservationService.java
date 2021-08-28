@@ -30,11 +30,11 @@ public class ReservationService {
         return reservations;
     }
 
-    public void deleteReservation(Long id){
+    public void deleteReservation(Long id) {
         repository.deleteById(id);
     }
 
-    public Reservation findReservationById(Long id){
+    public Reservation findReservationById(Long id) {
         return repository.getById(id);
     }
 
