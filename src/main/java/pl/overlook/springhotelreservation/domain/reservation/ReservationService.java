@@ -18,16 +18,24 @@ public class ReservationService {
     @Autowired
     ReservationRepository repository;
 
-    public void createNewReservation(Reservation reservation){
-
-
+    public void createNewReservation(Reservation reservation) {
 
         repository.save(reservation);
     }
 
     public List<Reservation> getAllReservations() {
-    List<Reservation> reservations = new ArrayList<>();
-    reservations.addAll(repository.findAll());
-    return reservations;
+        List<Reservation> reservations = new ArrayList<>();
+        reservations.addAll(repository.findAll());
+
+        return reservations;
     }
+
+    public void deleteReservation(Long id){
+        repository.deleteById(id);
+    }
+
+    public Reservation findReservationById(Long id){
+        return repository.getById(id);
+    }
+
 }

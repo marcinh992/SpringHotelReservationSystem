@@ -13,6 +13,7 @@ import pl.overlook.springhotelreservation.domain.room.RoomService;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.Date;
 
 @Component
 public class InitDB implements CommandLineRunner {
@@ -35,6 +36,10 @@ public class InitDB implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+//        dummy data
+
+        System.out.println("INIT GUEST AND ROOM DATABASE");
+
         Guest guest1 = new Guest("Przykładowy1", "Gość1", 51);
         Guest guest2 = new Guest("Przykładowy2", "Gość2", 52);
         Guest guest3 = new Guest("Przykładowy3", "Gość3", 53);
@@ -43,11 +48,7 @@ public class InitDB implements CommandLineRunner {
         Room room2 = new Room(52, BedType.DOUBLE, 2, false);
         Room room3 = new Room(53, BedType.KING_SIZE, 1, true);
 
-        LocalDateTime firstReservationDateStart = LocalDateTime.of(2021, 11, 11, 11, 11);
-        LocalDateTime firstReservationDateEnd = LocalDateTime.of(2021, 11, 16, 11, 11);
 
-
-        System.out.println("INIT GUEST AND ROOM DATABASE");
 
         guestService.createNewGuest(new Guest("Jack", "Torrance", 43));
         guestService.createNewGuest(new Guest("Wendy", "Torrance", 35));
@@ -65,7 +66,7 @@ public class InitDB implements CommandLineRunner {
         roomService.createNewRoom(room2);
         roomService.createNewRoom(room3);
 
-        reservationService.createNewReservation(new Reservation(room1, guest1, firstReservationDateStart, firstReservationDateEnd));
+//        reservationService.createNewReservation(new Reservation(room1, guest1, firstReservationDateStart, firstReservationDateEnd));
 
 
         System.out.println("Current guest count: " + guestService.getAllGuests().size());

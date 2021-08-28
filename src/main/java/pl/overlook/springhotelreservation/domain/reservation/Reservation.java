@@ -1,11 +1,11 @@
 package pl.overlook.springhotelreservation.domain.reservation;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.room.Room;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Reservation {
@@ -21,15 +21,18 @@ public class Reservation {
     private Guest guest;
 
 
-    private LocalDateTime fromDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date fromDate;
 
-
-    private LocalDateTime toDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date toDate;
 
     public Reservation() {
     }
 
-    public Reservation(Room room, Guest guest, LocalDateTime fromDate, LocalDateTime toDate) {
+    public Reservation(Room room, Guest guest, Date fromDate, Date toDate) {
         this.room = room;
         this.guest = guest;
         this.fromDate = fromDate;
@@ -60,19 +63,19 @@ public class Reservation {
         this.guest = guest;
     }
 
-    public LocalDateTime getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(LocalDateTime fromDate) {
+    public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
-    public LocalDateTime getToDate() {
+    public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(LocalDateTime toDate) {
+    public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 }

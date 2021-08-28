@@ -1,10 +1,11 @@
 package pl.overlook.springhotelreservation.domain.room;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 public class Room {
@@ -75,5 +76,11 @@ public class Room {
 
     public void setView(boolean view) {
         this.view = view;
+    }
+
+    @Override
+    public String toString() {
+        return "ID Pokoju : " +id + " " + "numer: " + number + " " + "łóżka w pokoju: " + beds + " " +
+                "liczba łazienek" + bathrooms + " " + "widok: " + view;
     }
 }
