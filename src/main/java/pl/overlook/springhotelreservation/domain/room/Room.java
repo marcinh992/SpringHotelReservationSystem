@@ -21,7 +21,6 @@ public class Room {
 
     private BedType beds;
 
-
     @Min(value = 1, message = "Minimalna liczba łazienek w pokoju to 1")
     @Max(value = 2, message = "Maksymalna liczba łazienek w pokoju to 2")
     private int bathrooms;

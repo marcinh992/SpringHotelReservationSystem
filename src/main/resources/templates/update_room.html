@@ -36,9 +36,9 @@
             <p th:if="${#fields.hasErrors('bathrooms')}" th:errors="*{bathrooms}"/>
         </div>
 
-        <div class="form-group">
+        <div class="ui checkbox">
             <label class="control-label">Widok z pokoju:</label>
-            <input type="number" class="form-control" th:field="*{view}"/>
+            <input type="checkbox" th:field="*{view}" th:value="${room.view}"/>
             <p th:if="${#fields.hasErrors('view')}" th:errors="*{view}"/>
         </div>
 

@@ -5,24 +5,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.guest.GuestService;
-import pl.overlook.springhotelreservation.domain.reservation.Reservation;
 import pl.overlook.springhotelreservation.domain.reservation.ReservationService;
 import pl.overlook.springhotelreservation.domain.room.BedType;
 import pl.overlook.springhotelreservation.domain.room.Room;
 import pl.overlook.springhotelreservation.domain.room.RoomService;
 
-import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.Date;
-
 @Component
 public class InitDB implements CommandLineRunner {
-
-    public static final int HOTEL_NIGHT_START_HOUR = 15;
-    public static final int HOTEL_NIGHT_START_MINUTE = 0;
-    public static final int HOTEL_NIGHT_END_HOUR = 10;
-    public static final int HOTEL_NIGHT_END_MINUTE = 0;
-
 
     @Autowired
     GuestService guestService;
