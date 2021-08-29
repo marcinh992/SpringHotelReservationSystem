@@ -33,9 +33,9 @@ public class InitDB implements CommandLineRunner {
         Guest guest2 = new Guest("Przykładowy2", "Gość2", false, true);
         Guest guest3 = new Guest("Przykładowy3", "Gość3", false, true);
 
-        Room room1 = new Room(51, BedType.SINGLE, 1, true);
-        Room room2 = new Room(52, BedType.DOUBLE, 2, false);
-        Room room3 = new Room(53, BedType.KING_SIZE, 1, true);
+//        Room room1 = new Room(51, BedType.SINGLE, 1, true);
+//        Room room2 = new Room(52, BedType.DOUBLE, 2, false);
+//        Room room3 = new Room(53, BedType.KING_SIZE, 1, true);
 
 
 
@@ -47,13 +47,13 @@ public class InitDB implements CommandLineRunner {
         guestService.createNewGuest(guest2);
         guestService.createNewGuest(guest3);
 
-        roomService.createNewRoom(new Room(99, BedType.DOUBLE, 1, true));
-        roomService.createNewRoom(new Room(1, BedType.KING_SIZE, 2, false));
-        roomService.createNewRoom(new Room(20, BedType.SINGLE, 2, true));
+//        roomService.createNewRoom(new Room(99, BedType.DOUBLE, 1, true));
+//        roomService.createNewRoom(new Room(1, BedType.KING_SIZE, 2, false));
+//        roomService.createNewRoom(new Room(20, BedType.SINGLE, 2, true));
 
-        roomService.createNewRoom(room1);
-        roomService.createNewRoom(room2);
-        roomService.createNewRoom(room3);
+//        roomService.createNewRoom(room1);
+//        roomService.createNewRoom(room2);
+//        roomService.createNewRoom(room3);
 
 //        reservationService.createNewReservation(new Reservation(room1, guest1, firstReservationDateStart, firstReservationDateEnd));
 

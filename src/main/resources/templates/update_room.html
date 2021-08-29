@@ -23,23 +23,39 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label">Rodzaj łóżka w pokoju:</label>
+            <label class="control-label">Łóżka w pokoju:</label>
+
             <select th:field="*{beds}">
                 <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType).values()}"
                         th:value="${bedOpt}" th:text="${bedOpt}"></option>
+
             </select>
+            <select th:field="*{beds}">
+                <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType).values()}"
+                        th:value="${bedOpt}" th:text="${bedOpt}"></option>
+
+            </select>
+            <select th:field="*{beds}">
+                <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType).values()}"
+                        th:value="${bedOpt}" th:text="${bedOpt}"></option>
+
+            </select>
+
         </div>
 
         <div class="form-group">
-            <label class="control-label">Liczba łazienek w pokoju:</label>
-            <input type="number" class="form-control" th:field="*{bathrooms}"/>
-            <p th:if="${#fields.hasErrors('bathrooms')}" th:errors="*{bathrooms}"/>
+            <label class="control-label">Typ pokoju:</label>
+            <select th:field="*{roomType}">
+                <option th:each="roomType : ${T(pl.overlook.springhotelreservation.domain.room.RoomType).values()}"
+                        th:value="${roomType}" th:text="${roomType}"></option>
+            </select>
         </div>
+
 
         <div class="ui checkbox">
             <label class="control-label">Widok z pokoju:</label>
-            <input type="checkbox" th:field="*{view}" th:value="${room.view}"/>
-            <p th:if="${#fields.hasErrors('view')}" th:errors="*{view}"/>
+            <input type="checkbox" th:field="*{panoramicView}" th:value="${room.panoramicView}"/>
+            <p th:if="${#fields.hasErrors('panoramicView')}" th:errors="*{panoramicView}"/>
         </div>
 
         <div class="row">

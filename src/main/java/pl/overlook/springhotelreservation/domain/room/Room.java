@@ -1,11 +1,9 @@
 package pl.overlook.springhotelreservation.domain.room;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 public class Room {
@@ -18,23 +16,21 @@ public class Room {
     @Max(value = 100, message = "Numer pokoju przekracza liczbę pokoi w hotelu")
     private int number;
 
+    @ElementCollection
+    private List<BedType> beds;
 
-    private BedType beds;
+    private RoomType roomType;
 
-    @Min(value = 1, message = "Minimalna liczba łazienek w pokoju to 1")
-    @Max(value = 2, message = "Maksymalna liczba łazienek w pokoju to 2")
-    private int bathrooms;
-
-    private boolean view;
+    private boolean panoramicView;
 
     public Room() {
     }
 
-    public Room(int number, BedType beds, int bathrooms, boolean view) {
+    public Room(int number, List<BedType> beds, RoomType roomType, boolean panoramicView) {
         this.number = number;
         this.beds = beds;
-        this.bathrooms = bathrooms;
-        this.view = view;
+        this.roomType = roomType;
+        this.panoramicView = panoramicView;
     }
 
     public Long getId() {
@@ -53,33 +49,27 @@ public class Room {
         this.number = number;
     }
 
-    public BedType getBeds() {
+    public List<BedType> getBeds() {
         return beds;
     }
 
-    public void setBeds(BedType beds) {
+    public void setBeds(List<BedType> beds) {
         this.beds = beds;
     }
 
-    public int getBathrooms() {
-        return bathrooms;
+    public RoomType getRoomType() {
+        return roomType;
     }
 
-    public void setBathrooms(int bathrooms) {
-        this.bathrooms = bathrooms;
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
     }
 
-    public boolean isView() {
-        return view;
+    public boolean isPanoramicView() {
+        return panoramicView;
     }
 
-    public void setView(boolean view) {
-        this.view = view;
-    }
-
-    @Override
-    public String toString() {
-        return "ID Pokoju : " +id + " " + "numer: " + number + " " + "łóżka w pokoju: " + beds + " " +
-                "liczba łazienek" + bathrooms + " " + "widok: " + view;
+    public void setPanoramicView(boolean panoramicView) {
+        this.panoramicView = panoramicView;
     }
 }
