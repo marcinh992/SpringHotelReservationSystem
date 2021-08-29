@@ -29,9 +29,9 @@ public class InitDB implements CommandLineRunner {
 
         System.out.println("INIT GUEST AND ROOM DATABASE");
 
-        Guest guest1 = new Guest("Przykładowy1", "Gość1", 51);
-        Guest guest2 = new Guest("Przykładowy2", "Gość2", 52);
-        Guest guest3 = new Guest("Przykładowy3", "Gość3", 53);
+        Guest guest1 = new Guest("Przykładowy1", "Gość1", false, true);
+        Guest guest2 = new Guest("Przykładowy2", "Gość2", false, true);
+        Guest guest3 = new Guest("Przykładowy3", "Gość3", false, true);
 
         Room room1 = new Room(51, BedType.SINGLE, 1, true);
         Room room2 = new Room(52, BedType.DOUBLE, 2, false);
@@ -39,9 +39,9 @@ public class InitDB implements CommandLineRunner {
 
 
 
-        guestService.createNewGuest(new Guest("Jack", "Torrance", 43));
-        guestService.createNewGuest(new Guest("Wendy", "Torrance", 35));
-        guestService.createNewGuest(new Guest("Danny", "Torrance", 8));
+        guestService.createNewGuest(new Guest("Jack", "Torrance", false, true));
+        guestService.createNewGuest(new Guest("Wendy", "Torrance", false, false));
+        guestService.createNewGuest(new Guest("Danny", "Torrance", true, false  ));
 
         guestService.createNewGuest(guest1);
         guestService.createNewGuest(guest2);

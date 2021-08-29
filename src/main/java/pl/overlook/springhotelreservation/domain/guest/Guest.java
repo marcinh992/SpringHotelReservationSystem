@@ -1,7 +1,5 @@
 package pl.overlook.springhotelreservation.domain.guest;
 
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,17 +22,18 @@ public class Guest {
     @Size(min = 2, max = 45, message = "Nazwisko musi mieścić się w przedziale między 2, a 45 znaków")
     private String lastName;
 
-    @NotNull(message = "Pole wiek nie może być puste")
-    @Range(min = 1, max = 110, message = "Wiek musi mieścić się w zakresie od 1 do 110")
-    private int age;
+    private boolean underEighteen;
+
+    private boolean reservationPerson;
 
     public Guest() {
     }
 
-    public Guest(String firstName, String lastName, int age) {
+    public Guest(String firstName, String lastName, boolean isUnderEighteen, boolean isReservationPerson) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.underEighteen = underEighteen;
+        this.reservationPerson = reservationPerson;
     }
 
     public Long getId() {
@@ -61,16 +60,19 @@ public class Guest {
         this.lastName = lastName;
     }
 
-    public int getAge() {
-        return age;
+    public boolean isUnderEighteen() {
+        return underEighteen;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setUnderEighteen(boolean underEighteen) {
+        this.underEighteen = underEighteen;
     }
 
-    @Override
-    public String toString() {
-        return "ID Gościa: " + id + " Dane: " + firstName + " " + lastName + " " + age;
+    public boolean isReservationPerson() {
+        return reservationPerson;
+    }
+
+    public void setReservationPerson(boolean reservationPerson) {
+        this.reservationPerson = reservationPerson;
     }
 }

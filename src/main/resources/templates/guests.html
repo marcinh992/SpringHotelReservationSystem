@@ -18,14 +18,16 @@
         <tr>
             <td>Imię</td>
             <td>Nazwisko</td>
-            <td>wiek</td>
+            <td>Osoba rezerwujaca</td>
+            <td>Osoba niepełnoletnia</td>
         </tr>
         </thead>
         <tbody>
         <tr th:each="guest : ${guests}">
             <td th:text="${guest.getFirstName()}"></td>
             <td th:text="${guest.getLastName()}"></td>
-            <td th:text="${guest.getAge()}"></td>
+            <td th:text="${guest.isReservationPerson()}"></td>
+            <td th:text="${guest.isUnderEighteen()}"></td>
             <td><a th:href="${'/guest/delete/'+guest.getId()}">Usuń</a></td>
             <td><a th:href="${'/guestUpdateForm/'+guest.getId()}">Edytuj</a></td>
         </tr>
