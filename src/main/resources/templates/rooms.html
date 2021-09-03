@@ -20,6 +20,7 @@
             <td>Typ pokoju</td>
             <td>Rodzaje łóżek</td>
             <td>Widok</td>
+            <td>Operacje</td>
         </tr>
         </thead>
         <tbody>
@@ -28,8 +29,9 @@
             <td th:text="${room.getRoomType()}"></td>
             <td th:text="${room.getBeds()}"></td>
             <td th:text="${room.isPanoramicView()}"></td>
-            <td><a th:href="${'/room/delete/'+room.getId()}">Usuń</a></td>
-            <td><a th:href="${'/roomUpdateForm/'+room.getId()}">Edytuj</a> </td>
+            <td><a th:href="${'/room/delete/'+room.getId()}">Usuń</a>
+                <a th:href="${'/roomUpdateForm/'+room.getId()}">Edytuj</a></td>
+<!--            <td><a th:href="${'/roomUpdateForm/'+room.getId()}">Edytuj</a> </td>-->
         </tr>
         </tbody>
     </table>

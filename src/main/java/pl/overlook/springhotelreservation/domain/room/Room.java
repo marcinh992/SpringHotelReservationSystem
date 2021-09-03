@@ -72,4 +72,5 @@ public class Room {
     public void setPanoramicView(boolean panoramicView) {
         this.panoramicView = panoramicView;
     }
+
 }

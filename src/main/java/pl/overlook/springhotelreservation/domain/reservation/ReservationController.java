@@ -58,6 +58,20 @@ public class ReservationController {
         return "reservationform";
     }
 
+//    @RequestMapping("/guestreservation")
+//    public String guestCreatingReservation(Model model){
+//        model.addAttribute("reservation", new Reservation());
+//
+//        List<Room> listRooms = roomService.getAllRooms();
+//
+//        model.addAttribute("listRooms", listRooms);
+//
+//
+//        return "guestreservation";
+//
+//
+//    }
+
     @RequestMapping(value = "/reservations", method = RequestMethod.POST)
     public String saveReservation(@Valid Reservation reservation, BindingResult bindingResult) {
 

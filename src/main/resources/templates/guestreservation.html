@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add guest</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <form class="form-horizontal" th:object="${reservation}" th:action="@{/reservations}" th:method="post">
+
+        <div class="form-group">
+            <label class="control-label">Od:</label>
+            <input type="date" class="form-control" th:field="*{fromDate}"/>
+            <p th:if="${#fields.hasErrors('fromDate')}" th:errors="*{fromDate}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Do:</label>
+            <input type="date" class="form-control" th:field="*{toDate}"/>
+            <p th:if="${#fields.hasErrors('toDate')}" th:errors="*{toDate}"/>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <td>Numer</td>
+                <td>Typ pokoju</td>
+                <td>Rodzaje łóżek</td>
+                <td>Widok</td>
+                <td>Operacje</td>
+            </tr>
+            </thead>
+            <tbody>
+            <div class="form-group">
+                    <tr th:each="room : ${listRooms}">
+                        <td th:text="${room.getNumber()}"></td>
+                        <td th:text="${room.getRoomType()}"></td>
+                        <td th:text="${room.getBeds()}"></td>
+                        <td th:text="${room.isPanoramicView()}"></td>
+                        <td><a th:href="@{/reservation(room=*{room.id})}">Zarezerwuj</a></td>
+                    </tr>
+
+            </div>
+            </tbody>
+        </table>
+
+
+
+    </form>
+</div>
+
+</body>
+</html>

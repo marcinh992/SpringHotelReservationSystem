@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Oldenburg', cursive;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    background: url('../img/background.jpg') center;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+}
+
+.reservationButton {
+    font-family: 'Oldenburg', cursive;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -60px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #FFFDD4;
+    width: 130px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+.reservationButton:hover, .reservationButton:focus, .reservationButton:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+}
+
+.loginButton {
+    font-family: 'Oldenburg', cursive;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    font-size: 15px;
+    font-weight: bold;
+    background: none;
+    width: 110px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+.loginButton:hover, .loginButton:focus, .loginButton:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+}
+
+main {
+    background-color: #fffee8;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider{
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slides{
+    width: 500%;
+    height: 500px;
+    display: flex;
+}
+
+.slides input{
+    display: none;
+}
+
+.slide{
+    width: 20%;
+    transition: 2s;
+}
+
+.slider img{
+    width: 800px;
+    height: 500px;
+}
+
+/*css for manual slide navigation*/
+
+.navigation-manual{
+ position: absolute;
+    width: 800px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn{
+    border: 2px solid #FFFDD4;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child){
+    margin-right: 40px;
+}
+
+.manual-btn:hover{
+    background: #FFFDD4;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+
+/*css for automatic navi*/
+
+.navigation-auto{
+    position: absolute;
+    display: flex;
+    width: 800px;
+    justify-content: center;
+    margin-top: 460px;
+}
+
+.navigation-auto div{
+    border: 2px solid #FFFDD4;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.navigation-auto div:not(:last-child){
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background: #FFFDD4;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background: #FFFDD4;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background: #FFFDD4;
+}
+
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background: #FFFDD4;
+}
+
+
+
+
+
+
+
+/*.stairsImg{*/
+/*    width: 400px;*/
+/*    height: 480px;*/
+/*    transition: 1s;*/
+/*    float: right;*/
+/*    margin-right: 70px;*/
+/*}*/
+
+/*.stairsImg:hover{*/
+/*    transform: scale(1.5);*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

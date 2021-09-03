@@ -39,6 +39,19 @@ public class Reservation {
         this.toDate = toDate;
     }
 
+    public Reservation(Date fromDate, Date toDate) {
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+    }
+
+    public Reservation(Room room, Date fromDate, Date toDate) {
+        this.room = room;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+    }
+
+
+
     public Long getId() {
         return id;
     }
