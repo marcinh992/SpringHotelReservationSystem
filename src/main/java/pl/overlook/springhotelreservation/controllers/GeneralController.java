@@ -12,4 +12,10 @@ public class GeneralController {
     }
 
 
+    @RequestMapping("/staffInterface")
+    public String staffInterface(){
+
+
+        return "staffInterface";
+    }
 }

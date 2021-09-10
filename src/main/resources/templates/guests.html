@@ -3,40 +3,45 @@
 <head>
     <title>Guests list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
-
-    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
-
+    <link rel="stylesheet" href="/css/guests.css">
 </head>
+
 <body>
 
-<div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <td>Imię</td>
-            <td>Nazwisko</td>
-            <td>Osoba rezerwujaca</td>
-            <td>Osoba niepełnoletnia</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="guest : ${guests}">
-            <td th:text="${guest.getFirstName()}"></td>
-            <td th:text="${guest.getLastName()}"></td>
-            <td th:text="${guest.isReservationPerson()}"></td>
-            <td th:text="${guest.isUnderEighteen()}"></td>
-            <td><a th:href="${'/guest/delete/'+guest.getId()}">Usuń</a></td>
-            <td><a th:href="${'/guestUpdateForm/'+guest.getId()}">Edytuj</a></td>
-        </tr>
-        </tbody>
-    </table>
-    <div class="row">
-        <a href="/newguest">Dodaj nowego gościa</a>
-    </div>
+<div class="filter">
+
 </div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Osoba rezerwujaca</th>
+        <th>Osoba niepełnoletnia</th>
+        <th></th>
+        <th>
+            <button class="createButton"><a href="/newguest">Dodaj gościa</a></button>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="guest : ${guests}">
+        <td th:text="${guest.getId()}"></td>
+        <td th:text="${guest.getFirstName()}"></td>
+        <td th:text="${guest.getLastName()}"></td>
+        <td th:text="${guest.isReservationPerson()}"></td>
+        <td th:text="${guest.isUnderEighteen()}"></td>
+        <td>
+            <button><a th:href="${'/guest/delete/'+guest.getId()}">Usuń</a></button>
+        </td>
+        <td>
+            <button><a th:href="${'/guestUpdateForm/'+guest.getId()}">Edytuj</a></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

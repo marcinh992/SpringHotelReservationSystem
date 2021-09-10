@@ -2,18 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"></meta>
-    <title>Registration form</title>
+    <title>Formularz rejestracji</title>
+    <link rel="stylesheet" href="/css/registerform.css">
+
 </head>
 <body>
-<h1>Formularz rejestracji</h1>
-<form action="#" method="post" th:action="@{/register}" th:object="${user}">
-    <input th:field="*{firstName}" placeholder="Imie"/><br/>
-    <input th:field="*{lastName}" placeholder="Nazwisko"/><br/>
-    <p th:errors="*{email}">Email errors</p>
-    <input th:field="*{email}" type="email" placeholder="Email"/><br/>
-    <p th:errors="*{password}">Password errors</p>
-    <input th:field="*{password}" type="password" placeholder="Hasło"/><br/>
-    <input type="submit" value="Zarejestruj"/>
-</form>
+
+
+    <div class="register">
+
+        <h1>Formularz rejestracji</h1>
+
+        <form action="#" method="post" th:action="@{/register}" th:object="${user}">
+
+            <div class="txt_field">
+            <input th:field="*{firstName}" placeholder="Imie"/><br/>
+            </div>
+
+            <div class="txt_field">
+            <input th:field="*{lastName}" placeholder="Nazwisko"/><br/>
+            </div>
+
+            <div class="txt_field">
+            <p th:errors="*{email}">Email errors</p>
+            <input th:field="*{email}" type="email" placeholder="Email"/><br/>
+            </div>
+
+            <div class="txt_field">
+            <p th:errors="*{password}">Password errors</p>
+            <input th:field="*{password}" type="password" placeholder="Hasło"/><br/>
+            </div>
+
+            <input type="submit" value="Zarejestruj"/>
+
+        </form>
+    </div>
+
 </body>
 </html>

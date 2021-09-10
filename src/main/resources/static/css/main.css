@@ -70,15 +70,17 @@ header {
     -webkit-transform: scale(1.1);
 }
 
-.main-header{
+.main-header {
     height: 60px;
     background-color: #fffee8;
     text-align: center;
 }
-h1{
-   margin: auto;
+
+h1 {
+    margin: auto;
     line-height: 100px;
     vertical-align: center;
+    border-top: 15px solid black;
 
 }
 
@@ -230,7 +232,7 @@ footer {
     color: #000;
 }
 
-.socials-menu ul li .fab:hover{
+.socials-menu ul li .fab:hover {
     color: #fff;
 
 }
@@ -244,28 +246,32 @@ footer {
     background-color: #fffee8;
     text-align: center;
     transition: 0.6s;
-    box-shadow: 0 5px 4px rgba(0,0,0,.5);
+    box-shadow: 0 5px 4px rgba(0, 0, 0, .5);
 }
 
 .socials-menu ul li a:hover {
     transform: translate(0, -10px);
 }
 
-.socials-menu ul li:nth-child(1) a:hover{
+.socials-menu ul li:nth-child(1) a:hover {
     background-color: #131418;
 }
 
-.socials-menu ul li:nth-child(2) a:hover{
+.socials-menu ul li:nth-child(2) a:hover {
     background-color: #CD201F;
 }
 
-.socials-menu ul li:nth-child(3) a:hover{
+.socials-menu ul li:nth-child(3) a:hover {
     background-color: #0A66C2;
 }
 
-.socials-menu ul li:nth-child(4) a:hover{
+.socials-menu ul li:nth-child(4) a:hover {
     background-color: #1877F2;
 }
+
+
+
+
 
 
 

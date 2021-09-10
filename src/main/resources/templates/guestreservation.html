@@ -13,47 +13,29 @@
 <body>
 
 <div class="container">
-    <form class="form-horizontal" th:object="${reservation}" th:action="@{/reservations}" th:method="post">
+
+
+    <h1>Hello Reservation</h1>
+    <form class="form-horizontal"  th:action="@{/roomChoosing}" th:method="post">
 
         <div class="form-group">
             <label class="control-label">Od:</label>
-            <input type="date" class="form-control" th:field="*{fromDate}"/>
-            <p th:if="${#fields.hasErrors('fromDate')}" th:errors="*{fromDate}"/>
+            <input type="date" class="form-control" name="fromDate"/>
+
         </div>
 
         <div class="form-group">
             <label class="control-label">Do:</label>
-            <input type="date" class="form-control" th:field="*{toDate}"/>
-            <p th:if="${#fields.hasErrors('toDate')}" th:errors="*{toDate}"/>
+            <input type="date" class="form-control" name="toDate"/>
+
         </div>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <td>Numer</td>
-                <td>Typ pokoju</td>
-                <td>Rodzaje łóżek</td>
-                <td>Widok</td>
-                <td>Operacje</td>
-            </tr>
-            </thead>
-            <tbody>
-            <div class="form-group">
-                    <tr th:each="room : ${listRooms}">
-                        <td th:text="${room.getNumber()}"></td>
-                        <td th:text="${room.getRoomType()}"></td>
-                        <td th:text="${room.getBeds()}"></td>
-                        <td th:text="${room.isPanoramicView()}"></td>
-                        <td><a th:href="@{/reservation(room=*{room.id})}">Zarezerwuj</a></td>
-                    </tr>
-
-            </div>
-            </tbody>
-        </table>
-
-
-
+        <button type="submit" class="btn btn-default">Wybór pokoju</button>
     </form>
+
+
+
+
 </div>
 
 </body>

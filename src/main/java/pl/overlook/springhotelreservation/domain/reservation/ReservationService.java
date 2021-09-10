@@ -3,6 +3,7 @@ package pl.overlook.springhotelreservation.domain.reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.overlook.springhotelreservation.domain.guest.GuestService;
+import pl.overlook.springhotelreservation.domain.room.Room;
 import pl.overlook.springhotelreservation.domain.room.RoomService;
 
 import java.util.ArrayList;
@@ -18,7 +19,11 @@ public class ReservationService {
     @Autowired
     ReservationRepository repository;
 
-    public void createNewReservation(Reservation reservation) {
+    public void createNewReservation(Reservation reservation) throws IllegalArgumentException {
+
+        if(reservation.getToDate().before(reservation.getFromDate())){
+            throw new IllegalArgumentException();
+        }
 
         repository.save(reservation);
     }
@@ -37,5 +42,6 @@ public class ReservationService {
     public Reservation findReservationById(Long id) {
         return repository.getById(id);
     }
+
 
 }

@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Oldenburg', cursive;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+body{
+    background-color: #090B06;
+}
+
+.panel-img{
+    background: url("../img/background_for_admin_panel.jpg") center no-repeat;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    filter: blur(5px);
+}
+
+
+.panel{
+    position: absolute;
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100vh;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.btn{
+    width: 300px;
+    height: 40vh;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+    font-size: 20px;
+    text-align: center;
+}
+
+.btn:hover, .btn:focus, .btn:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+}
+
+.btn a {
+    display:block;
+    position: relative;
+    z-index: 1;
+    padding: 6em;
+    margin: -2em;
+}
+
+
+
+

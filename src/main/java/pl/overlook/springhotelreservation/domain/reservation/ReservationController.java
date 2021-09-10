@@ -2,6 +2,7 @@ package pl.overlook.springhotelreservation.domain.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -110,6 +111,32 @@ public class ReservationController {
 
         return "update_reservation";
     }
+
+    @GetMapping(value="/guestreservation")
+    public String guestCreatingReservation(){
+
+        return "guestreservation";
+
+    }
+
+//    @PostMapping(value = "/roomChoosing")
+//    public String guestChoosingRoom(ReservationDTO reservationDTO, Model model){
+//
+//        System.out.println("Dostałem");
+//
+//        model.addAttribute("fromDate", reservationDTO.getFromDate());
+//        model.addAttribute("toDate", reservationDTO.getToDate());
+//
+////        wyszukaj wolne pokoje w tym termienie
+//        List<Room> listRooms = roomService.getAllRooms();
+//        model.addAttribute("listRooms", listRooms);
+//
+//        Room room = roomService.findRoomById();
+//
+//        return "guestreservation";
+//    }
+//
+////    getmapping na reservation zeby obsłużyć parametry
 
 
 
