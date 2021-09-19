@@ -54,17 +54,6 @@ public class ReservationService {
         reservation.setGuest(guest);
     }
 
-    public String correctlyShowingReservation(Reservation reservation){
-
-        String noGuestYet = "BRAK";
-
-        if (reservation.getGuest()==null){
-            return noGuestYet;
-        } else {
-            return reservation.getGuest().getId().toString();
-        }
-    }
-
 //    KONIEC MANEWRÓW
 
 

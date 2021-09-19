@@ -19,7 +19,7 @@
         <th>Od</th>
         <th>Do</th>
         <th>ID Pokoju</th>
-        <th>ID Gościa</th>
+        <th>Dane Gościa</th>
         <th></th>
         <th>
             <button class="createButton"><a href="/newreservation">Dodaj rezerwacje</a></button>
@@ -31,8 +31,7 @@
         <td th:text="${reservation.getFromDate()}"></td>
         <td th:text="${reservation.getToDate()}"></td>
         <td th:text="${reservation.getRoom().getId()}"></td>
-        <td th:text="${reservation.getGuest().getId()}"></td>
-<!--        <td th:text="${}"></td>-->
+        <td th:text="${reservation.getGuest()} ? ${reservation.getGuest()} : 'REZERWACJA W TOKU!'"></td>
         <td>
             <button><a th:href="${'/reservation/delete/'+reservation.getId()}">Usuń</a></button>
         </td>

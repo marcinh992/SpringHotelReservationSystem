@@ -144,11 +144,6 @@ public class ReservationController {
 
         finalReservation.setGuest(guest);
 
-        System.out.println(finalReservation);
-
-//        reservationService.puttingGuestIntoUncompletedReservation(guest.getId(), idReservation);
-
-        System.out.println(finalReservation);
 
         return "reservationComplited";
 

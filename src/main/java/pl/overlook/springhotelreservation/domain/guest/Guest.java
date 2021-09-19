@@ -66,5 +66,8 @@ public class Guest {
         this.birthDate = birthDate;
     }
 
-
+    @Override
+    public String toString() {
+        return "ID: " + id + ", " + firstName + " " + lastName;
+    }
 }
