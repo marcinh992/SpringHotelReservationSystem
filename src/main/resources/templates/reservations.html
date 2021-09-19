@@ -32,6 +32,7 @@
         <td th:text="${reservation.getToDate()}"></td>
         <td th:text="${reservation.getRoom().getId()}"></td>
         <td th:text="${reservation.getGuest().getId()}"></td>
+<!--        <td th:text="${}"></td>-->
         <td>
             <button><a th:href="${'/reservation/delete/'+reservation.getId()}">Usuń</a></button>
         </td>

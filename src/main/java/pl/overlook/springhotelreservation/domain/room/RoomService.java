@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.overlook.springhotelreservation.domain.reservation.Reservation;
 import pl.overlook.springhotelreservation.domain.reservation.ReservationService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,6 +15,7 @@ public class RoomService {
     @Autowired
     RoomRepository repository;
 
+    @Autowired
     ReservationService reservationService;
 
     public void createNewRoom(Room room) {
@@ -35,13 +36,13 @@ public class RoomService {
         return rooms;
     }
 
-    public List<Room> getAvailableRooms(Date from, Date to) {
+    public List<Room> getAvailableRooms(LocalDate from, LocalDate to) {
 
         if (from == null || to == null) {
-            throw new IllegalArgumentException("Parameters can't be null");
+            throw new IllegalArgumentException("Parameters cannot be null");
         }
 
-        if (to.before(from)) {
+        if (to.isBefore(from)) {
             throw new IllegalArgumentException("End date cannot be before start date");
         }
 
@@ -54,17 +55,27 @@ public class RoomService {
                 availableRooms.remove(reservation.getRoom());
             } else if (reservation.getToDate().equals(to)) {
                 availableRooms.remove(reservation.getRoom());
-            } else if (reservation.getFromDate().after(from) && reservation.getFromDate().before(to)) {
+            } else if (reservation.getFromDate().isAfter(from) && reservation.getFromDate().isBefore(to)) {
                 availableRooms.remove(reservation.getRoom());
-            } else if (reservation.getToDate().after(from) && reservation.getToDate().before(to)) {
+            } else if (reservation.getToDate().isAfter(from) && reservation.getToDate().isBefore(to)) {
                 availableRooms.remove(reservation.getRoom());
-            } else if (from.after(reservation.getFromDate()) && to.before(reservation.getToDate())) {
+            } else if (from.isAfter(reservation.getFromDate()) && to.isBefore(reservation.getToDate())) {
                 availableRooms.remove(reservation.getRoom());
             }
         }
-
         return availableRooms;
     }
 
+    public void updateRoom(Long id, Room room) {
+
+        Room existingRoom = this.findRoomById(id);
+
+        if (existingRoom == null) {
+            this.createNewRoom(room);
+        } else {
+            room.setId(existingRoom.getId());
+            this.repository.save(room);
+        }
+    }
 
 }

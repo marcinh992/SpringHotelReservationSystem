@@ -16,10 +16,9 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Imię</th>
+        <th>Imie</th>
         <th>Nazwisko</th>
-        <th>Osoba rezerwujaca</th>
-        <th>Osoba niepełnoletnia</th>
+        <th>Data urodzenia</th>
         <th></th>
         <th>
             <button class="createButton"><a href="/newguest">Dodaj gościa</a></button>
@@ -31,8 +30,7 @@
         <td th:text="${guest.getId()}"></td>
         <td th:text="${guest.getFirstName()}"></td>
         <td th:text="${guest.getLastName()}"></td>
-        <td th:text="${guest.isReservationPerson()}"></td>
-        <td th:text="${guest.isUnderEighteen()}"></td>
+        <td th:text="${guest.getBirthDate()}"></td>
         <td>
             <button><a th:href="${'/guest/delete/'+guest.getId()}">Usuń</a></button>
         </td>

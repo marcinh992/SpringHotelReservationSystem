@@ -25,16 +25,16 @@
 <main>
 
 
-     <!--    image slider start-->
+    <!--    image slider start-->
     <div class="slider">
         <div class="slides">
-<!--            radio buttons start-->
+            <!--            radio buttons start-->
             <input type="radio" name="radio-btn" id="radio1">
             <input type="radio" name="radio-btn" id="radio2">
             <input type="radio" name="radio-btn" id="radio3">
             <input type="radio" name="radio-btn" id="radio4">
-<!--            radio buttons end-->
-<!--            sliders images start-->
+            <!--            radio buttons end-->
+            <!--            sliders images start-->
             <div class="slide first">
                 <img src="../img/hall2.jpg" alt="">
             </div>
@@ -47,106 +47,101 @@
             <div class="slide">
                 <img src="../img/bar.jpg" alt="">
             </div>
-<!--            sliders images end-->
-<!--            automatic navigation start-->
+            <!--            sliders images end-->
+            <!--            automatic navigation start-->
             <div class="navigation-auto">
                 <div class="auto-btn1"></div>
                 <div class="auto-btn2"></div>
                 <div class="auto-btn3"></div>
                 <div class="auto-btn4"></div>
             </div>
-<!--            automatic navigation end-->
+            <!--            automatic navigation end-->
         </div>
-<!--        manual navigation start-->
+        <!--        manual navigation start-->
         <div class="navigation-manual">
             <label for="radio1" class="manual-btn"></label>
             <label for="radio2" class="manual-btn"></label>
             <label for="radio3" class="manual-btn"></label>
             <label for="radio4" class="manual-btn"></label>
         </div>
-<!--        manual navigation end-->
+        <!--        manual navigation end-->
     </div>
     <!--    image slider end-->
 
     <script type="text/javascript">
         var counter = 1;
-        setInterval(function (){
-            document.getElementById('radio' + counter).checked=true;
+        setInterval(function () {
+            document.getElementById('radio' + counter).checked = true;
             counter++;
-            if (counter > 4){
+            if (counter > 4) {
                 counter = 1;
             }
         }, 5000);
     </script>
 
 
-
 </main>
 
 <article>
-<!--    <div class="container">-->
-<!--        <div class="card">-->
-<!--            <div class="imgBx">-->
-<!--                <img src="../img/hotel-building-inprogress.jpg">-->
-<!--            </div>-->
-<!--            <div class="content">-->
-<!--            <p> Panorama jest zacisznym luksusowym hotelem położonym w Górach Skalistych, 40 mil-->
-<!--                na zachód od Sidewinder.-->
+    <div class="container1">
 
-<!--                Znamienita historia Hotelu sięga już początków XXw, a dokładnie 1907r kiedy to hotel-->
-<!--                wybudował Robert Townley Watson.</p>-->
-<!--            </div>-->
-<!--        </div>-->
+        <img src="../img/hotel-building-inprogress.jpg">
 
-<!--        <div class="card">-->
-<!--            <div class="imgBx">-->
-<!--                <img src="../img/carpet.jpg">-->
-<!--            </div>-->
-<!--            <div class="content">-->
-<!--                <p> PO II Wojnie Światowej Panorama została całkowicie odrestaurowana i aktualnie posiada-->
-<!--                    110 apartamentów o najwyższym standardzie wyposażenia, z okien których roztacza się wspaniały-->
-<!--                    widok na zachodnią część gór.</p>-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="textPanorama">
+            <p> Panorama jest zacisznym luksusowym hotelem położonym w Górach Skalistych, 40 mil
+                na zachód od Sidewinder.
 
-<!--        <div class="card">-->
-<!--            <div class="imgBx">-->
-<!--                <img src="../img/elevator.jpg">-->
-<!--            </div>-->
-<!--            <div class="content">-->
-<!--                <p> koronnym hotelu jest apartament prezydencki, w którym przebywało już czterech-->
-<!--                    prezydentów USA: Warren G. Harding, Woodrow Wilson, Franklin D. Roosevelt i Richard Nixon.</p>-->
-
-<!--                <p>Ponadto Panorama w swej histori gościła największe nazwiska Ameryki, m.in: Henry’ego Ford’a,-->
-<!--                    Nelson’a Rockefeller’a, Marilyn Monroe, Carole Lombard czy Jean Harlow</p>-->
-
-<!--                <p>Dodatkowo w Hotelu mogą spotkać Państwo najpiękniejsze w Ameryce boisko do roque'a czy-->
-<!--                    znane w całym kraju żywopłoty strzyżone na kształt zwierząt.</p>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="card">-->
-<!--            <div class="imgBx">-->
-<!--                <img src="../img/torrance-at-bar.jpg">-->
-<!--            </div>-->
-<!--            <div class="content">-->
-<!--                <p> Panorama jest jedynym w swoim rodzaju Hotelem, z niepowtarzalną historią i tradycjami.-->
-<!--                    Coroczny Bal maskowy organizowany z okazji Święta Dnia niepodległości czerpie swe-->
-<!--                    korzenie od przeszło pół wieku.</p>-->
-
-<!--                    <p>W imieniu moim oraz całego hotelu gorąco zapraszam. Gwarantuję, że będzie to wizyta-->
-<!--                        jedyna w swoim rodzaju. </p>-->
-
-<!--                    <p>Steward Ullman, kierownik hotelu</p>-->
-<!--            </div>-->
-<!--        </div>-->
+                Znamienita historia Hotelu sięga już początków XXw, a dokładnie 1907r kiedy to hotel
+                wybudował Robert Townley Watson.</p>
+        </div>
+    </div>
 
 
-<!--    </div>-->
+    <div class="container2">
 
+        <img src="../img/carpet.jpg">
 
+        <div class="textPanorama2">
+            <p> Po II Wojnie Światowej Panorama została całkowicie odrestaurowana i aktualnie posiada
+                110 apartamentów o najwyższym standardzie wyposażenia, z okien których roztacza się wspaniały
+                widok na zachodnią część gór.</p>
+        </div>
+    </div>
 
+    <div class="container3">
 
+        <img src="../img/elevator.jpg">
+
+        <div class="textPanorama3">
+
+            <p> koronnym hotelu jest apartament prezydencki, w którym przebywało już czterech
+                prezydentów USA: Warren G. Harding, Woodrow Wilson, Franklin D. Roosevelt i Richard Nixon.</p>
+
+            <p>Ponadto Panorama w swej histori gościła największe nazwiska Ameryki, m.in: Henry’ego Ford’a,
+                Nelson’a Rockefeller’a, Marilyn Monroe, Carole Lombard czy Jean Harlow</p>
+
+            <p>Dodatkowo w Hotelu mogą spotkać Państwo najpiękniejsze w Ameryce boisko do roque'a czy
+                znane w całym kraju żywopłoty strzyżone na kształt zwierząt.</p>
+        </div>
+    </div>
+
+    <div class="container4">
+
+        <img src="../img/torrance-at-bar.jpg">
+
+        <div class="textPanorama4">
+
+            <p> Panorama jest jedynym w swoim rodzaju Hotelem, z niepowtarzalną historią i tradycjami.
+                Coroczny Bal maskowy organizowany z okazji Święta Dnia Niepodległości czerpie swe
+                korzenie od przeszło pół wieku.</p>
+
+            <p>W imieniu moim oraz całego hotelu gorąco zapraszam. Gwarantuję, że będzie to wizyta
+                jedyna w swoim rodzaju. </p>
+
+            <br>
+            <p>~Steward Ullman, kierownik hotelu</p>
+        </div>
+    </div>
 
 
 </article>
@@ -157,10 +152,13 @@
 
     <div class="socials-menu">
         <ul>
-            <li><a href="https://github.com/marcinh992" target="_blank"><i class="fab fa-github"></i></a> </li>
-            <li><a href="https://www.youtube.com/watch?v=t-QsLc2CLN8&list=PLFr4Gn266-7qRksR5XLkxFw0iz-5vYUBR&ab_channel=Pawe%C5%82%C4%86wik" target="_blank"><i class="fab fa-youtube"></i></a> </li>
-            <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a> </li>
-            <li><a href="https://www.facebook.com/marcin.pypec.79" target="_blank"><i class="fab fa-facebook"></i></a> </li>
+            <li><a href="https://github.com/marcinh992" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=t-QsLc2CLN8&list=PLFr4Gn266-7qRksR5XLkxFw0iz-5vYUBR&ab_channel=Pawe%C5%82%C4%86wik"
+                   target="_blank"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://www.facebook.com/marcin.pypec.79" target="_blank"><i class="fab fa-facebook"></i></a>
+            </li>
         </ul>
     </div>
 

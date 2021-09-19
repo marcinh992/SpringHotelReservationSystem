@@ -22,7 +22,7 @@ body {
     filter: blur(5px);
 }
 
-table {
+table{
     position: absolute;
     z-index: 2;
     left: 50%;
@@ -94,3 +94,5 @@ button:hover, button:focus, button:active {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.1);
 }
+
+

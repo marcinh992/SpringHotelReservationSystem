@@ -5,7 +5,7 @@ import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.room.Room;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Reservation {
@@ -22,35 +22,31 @@ public class Reservation {
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date fromDate;
+    private LocalDate fromDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date toDate;
+    private LocalDate toDate;
 
     public Reservation() {
     }
 
-    public Reservation(Room room, Guest guest, Date fromDate, Date toDate) {
+    public Reservation(Room room, Guest guest, LocalDate fromDate, LocalDate toDate) {
         this.room = room;
         this.guest = guest;
         this.fromDate = fromDate;
         this.toDate = toDate;
     }
 
-    public Reservation(Date fromDate, Date toDate) {
+    public Reservation(LocalDate fromDate, LocalDate toDate) {
         this.fromDate = fromDate;
         this.toDate = toDate;
     }
 
-    public Reservation(Room room, Date fromDate, Date toDate) {
+    public Reservation(Room room, LocalDate fromDate, LocalDate toDate) {
         this.room = room;
         this.fromDate = fromDate;
         this.toDate = toDate;
     }
-
-
 
     public Long getId() {
         return id;
@@ -76,19 +72,20 @@ public class Reservation {
         this.guest = guest;
     }
 
-    public Date getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
-    public Date getToDate() {
+    public LocalDate getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
+
 }

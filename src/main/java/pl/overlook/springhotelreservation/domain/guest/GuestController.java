@@ -18,6 +18,7 @@ public class GuestController {
     @Autowired
     GuestService guestService;
 
+
     @RequestMapping("/guests")
     public String getGuests(Model model) {
         List<Guest> allGuests = guestService.getAllGuests();

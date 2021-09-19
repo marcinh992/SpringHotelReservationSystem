@@ -1,31 +1,35 @@
 package pl.overlook.springhotelreservation.domain.reservation;
 
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 
 public class ReservationDTO {
 
-    private Date fromDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fromDate;
 
-    private Date toDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate toDate;
 
-    public ReservationDTO(Date fromDate, Date toDate) {
+    public ReservationDTO(LocalDate fromDate, LocalDate toDate) {
         this.fromDate = fromDate;
         this.toDate = toDate;
     }
 
-    public Date getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
-    public Date getToDate() {
+    public LocalDate getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
 }

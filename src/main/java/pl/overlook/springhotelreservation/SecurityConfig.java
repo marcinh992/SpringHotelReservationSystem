@@ -16,9 +16,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return passwordEncoder;
     }
 
+
+    // only for testing POST via REST api disabled csrf   !! REMEMBER TO ENABLE IT LATER !!
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**").permitAll();
 //                .antMatchers("/").permitAll()
@@ -26,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .anyRequest().authenticated()
 //                .and()
 //                .formLogin();
-        ;
+
     }
 
 }

@@ -3,48 +3,41 @@
 <head>
     <title>Edycja gościa</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/guestform.css">
 
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
 
-    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
 </head>
 <body>
 
-<div class="container">
-    <form class="form-horizontal" th:object="${guest}" th:action="@{/guests}" th:method="post">
+<div class="filter">
 
-        <input type="hidden" th:field="*{id}"/>
+</div>
 
-        <div class="form-group">
-            <label class="control-label">Imie:</label>
-            <input type="text" class="form-control" th:field="*{firstName}"/>
+<div class="create">
+
+    <h1>EDYCJA GOŚCIA</h1>
+
+    <form th:object="${guest}" th:action="@{/guests}" th:method="post">
+
+
+        <div class="txt_field">
+            <input type="text" class="form-control" th:field="*{firstName}" placeholder="Imie"/>
             <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"/>
-
         </div>
 
-        <div class="form-group">
-            <label class="control-label">Nazwisko:</label>
-            <input type="text" class="form-control" th:field="*{lastName}"/>
+        <div class="txt_field">
+            <input type="text" class="form-control" th:field="*{lastName}" placeholder="Nazwisko"/>
             <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"/>
-
         </div>
 
-        <div class="ui checkbox">
-            <label class="control-label">Osoba rezerwująca:</label>
-            <input type="checkbox" th:field="*{reservationPerson}" th:value="${guest.reservationPerson}"/>
-            <p th:if="${#fields.hasErrors('reservationPerson')}" th:errors="*{reservationPerson}"/>
+        <div class="date_field">
+            <p>Data urodzenia</p>
+            <input type="date" class="form-control" th:field="*{birthDate}"/>
+            <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"/>
         </div>
 
-        <div class="ui checkbox">
-            <label class="control-label">Osoba niepełnoletnia:</label>
-            <input type="checkbox" th:field="*{underEighteen}" th:value="${guest.underEighteen}"/>
-            <p th:if="${#fields.hasErrors('underEighteen')}" th:errors="*{underEighteen}"/>
-        </div>
+        <button type="submit" class="createBtn">Edytuj dane</button>
 
-        <div class="row">
-            <button type="submit" class="btn btn-default">Edytuj dane</button>
-        </div>
     </form>
 </div>
 

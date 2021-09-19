@@ -12,11 +12,9 @@ import pl.overlook.springhotelreservation.domain.room.Room;
 import pl.overlook.springhotelreservation.domain.room.RoomService;
 import pl.overlook.springhotelreservation.domain.room.RoomType;
 
-import javax.xml.crypto.Data;
-import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -55,31 +53,34 @@ public class InitDB implements CommandLineRunner {
         Room room2 = new Room(52, bedsForRoom2, RoomType.LUXURY, false);
         Room room3 = new Room(53, bedsForRoom3, RoomType.BUSINESS, true);
 
-        Guest guest1 = new Guest("Jack", "Torrance", false, true);
-        Guest guest2 =new Guest("Wendy", "Torrance", false, false);
-        Guest guest3 =new Guest("Danny", "Torrance", true, false);
+        LocalDate firstGuestBirthDay = LocalDate.of(1970, 3, 1);
+        LocalDate secondGuestBirthDay = LocalDate.of(1975, 8, 25);
+        LocalDate thirdGuestBirthDay = LocalDate.of(2012, 12, 18);
+
+        Guest guest1 = new Guest("Jack", "Torrance", firstGuestBirthDay);
+        Guest guest2 = new Guest("Wendy", "Torrance", secondGuestBirthDay);
+        Guest guest3 = new Guest("Danny", "Torrance", thirdGuestBirthDay);
 
 
         guestService.createNewGuest(guest1);
         guestService.createNewGuest(guest2);
         guestService.createNewGuest(guest3);
 
-
         roomService.createNewRoom(room1);
         roomService.createNewRoom(room2);
         roomService.createNewRoom(room3);
 
-        Date firstReservationStartDate = new Date(2021, Calendar.NOVEMBER,1);
-        Date secondReservationStartDate = new Date(2021, Calendar.NOVEMBER,2);
-        Date thirdReservationStartDate = new Date(2021, Calendar.NOVEMBER,3);
+        LocalDate firstReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 1);
+        LocalDate secondReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 2);
+        LocalDate thirdReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 3);
 
-        Date firstReservationEndDate = new Date(2021, Calendar.NOVEMBER,7);
-        Date secondReservationEndDate = new Date(2021, Calendar.NOVEMBER,8);
-        Date thirdReservationEndDate = new Date(2021, Calendar.NOVEMBER,9);
+        LocalDate firstReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 7);
+        LocalDate secondReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 8);
+        LocalDate thirdReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 9);
 
-        Reservation firstReservation = new Reservation(room1, guest1,firstReservationStartDate, firstReservationEndDate);
-        Reservation secondReservation = new Reservation(room2, guest2,secondReservationStartDate, secondReservationEndDate);
-        Reservation thirdReservation = new Reservation(room3, guest3,thirdReservationStartDate, thirdReservationEndDate);
+        Reservation firstReservation = new Reservation(room1, guest1, firstReservationStartDate, firstReservationEndDate);
+        Reservation secondReservation = new Reservation(room2, guest2, secondReservationStartDate, secondReservationEndDate);
+        Reservation thirdReservation = new Reservation(room3, guest3, thirdReservationStartDate, thirdReservationEndDate);
 
         reservationService.createNewReservation(firstReservation);
         reservationService.createNewReservation(secondReservation);

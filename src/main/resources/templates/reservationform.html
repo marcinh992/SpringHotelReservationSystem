@@ -3,30 +3,30 @@
 <head>
     <title>Add guest</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
-
-    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="/css/guestform.css">
 
 </head>
 <body>
 
-<div class="container">
-    <form class="form-horizontal" th:object="${reservation}" th:action="@{/reservations}" th:method="post">
+<div class="filter">
 
-        <div class="form-group">
-            <label class="control-label">Od:</label>
+</div>
+
+<div class="create">
+    <form th:object="${reservation}" th:action="@{/reservations}" th:method="post">
+
+        <div class="date_field">
+            <p>Od</p>
             <input type="date" class="form-control" th:field="*{fromDate}"/>
             <p th:if="${#fields.hasErrors('fromDate')}" th:errors="*{fromDate}"/>
         </div>
-        <div class="form-group">
-            <label class="control-label">Do:</label>
+        <div class="date_field">
+            <p>Do</p>
             <input type="date" class="form-control" th:field="*{toDate}"/>
             <p th:if="${#fields.hasErrors('toDate')}" th:errors="*{toDate}"/>
         </div>
-        <div class="form-group">
-            <label class="control-label">POKÓJ:</label>
+        <div class="option_field">
+            <p>Pokój</p>
             <select th:field="*{room} ">
                 <th:block th:each="room : ${listRooms}">
                     <option th:text="${room.number}" th:value="${room.id}"/>
@@ -35,8 +35,8 @@
 
             </select>
         </div>
-        <div class="form-group">
-            <label class="control-label">GOŚĆ:</label>
+        <div class="option_field">
+            <p>Gość</p>
             <select th:field="*{guest} ">
                 <th:block th:each="guest : ${listGuests}">
                     <option th:text="${guest.firstName}" th:value="${guest.id}"/>
@@ -46,9 +46,8 @@
             </select>
         </div>
 
-        <div class="row">
-            <button type="submit" class="btn btn-default">Utwórz rezerwację</button>
-        </div>
+            <button type="submit" class="createBtn">Utwórz rezerwację</button>
+
     </form>
 </div>
 

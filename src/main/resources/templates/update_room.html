@@ -3,27 +3,32 @@
 <head>
     <title>Edycja pokój</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/guestform.css">
 
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
-
-    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
 </head>
 <body>
 
-<div class="container">
-    <form class="form-horizontal" th:object="${room}" th:action="@{/rooms}" th:method="post">
+<div class="filter">
+
+</div>
+
+<div class="create">
+
+    <h1>EDYCJA POKOJUa</h1>
+
+
+    <form th:object="${room}" th:action="@{/rooms}" th:method="post">
 
         <input type="hidden" th:field="*{id}"/>
 
-        <div class="form-group">
-            <label class="control-label">Numer pokoju:</label>
+        <div class="txt_field">
+            <p>Numer pokoju</p>
             <input type="text" class="form-control" th:field="*{number}"/>
             <p th:if="${#fields.hasErrors('number')}" th:errors="*{number}"/>
         </div>
 
-        <div class="form-group">
-            <label class="control-label">Łóżka w pokoju:</label>
+        <div class="option_field">
+            <p>Rodzaje łóżek w pokoju</p>
 
             <select th:field="*{beds}">
                 <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType).values()}"
@@ -40,11 +45,10 @@
                         th:value="${bedOpt}" th:text="${bedOpt}"></option>
 
             </select>
-
         </div>
 
-        <div class="form-group">
-            <label class="control-label">Typ pokoju:</label>
+        <div class="option_field">
+            <p>Rodzaj pokoju</p>
             <select th:field="*{roomType}">
                 <option th:each="roomType : ${T(pl.overlook.springhotelreservation.domain.room.RoomType).values()}"
                         th:value="${roomType}" th:text="${roomType}"></option>
@@ -52,15 +56,15 @@
         </div>
 
 
-        <div class="ui checkbox">
-            <label class="control-label">Widok z pokoju:</label>
+        <div class="checkbox">
+            <p>Widok z pokoju</p>
             <input type="checkbox" th:field="*{panoramicView}" th:value="${room.panoramicView}"/>
             <p th:if="${#fields.hasErrors('panoramicView')}" th:errors="*{panoramicView}"/>
         </div>
 
-        <div class="row">
-            <button type="submit" class="btn btn-default">Utwórz pokój</button>
-        </div>
+
+            <button type="submit" class="createBtn">Edytuj pokój</button>
+
     </form>
 </div>
 

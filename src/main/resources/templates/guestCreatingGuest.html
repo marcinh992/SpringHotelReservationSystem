@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form th:object="${guest}" th:action="@{/finalStep}" th:method="post">
+
+    <div class="txt_field">
+        <input type="text" class="form-control" th:field="*{firstName}" placeholder="Imie"/>
+        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"/>
+    </div>
+
+    <div class="txt_field">
+        <input type="text" class="form-control" th:field="*{lastName}" placeholder="Nazwisko"/>
+        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"/>
+    </div>
+
+    <div class="date_field">
+        <p>Data urodzenia</p>
+        <input type="date" class="form-control" th:field="*{birthDate}"/>
+        <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"/>
+    </div>
+
+    <input type="hidden" name="idReservation" th:value="${idReservation}"/>
+
+    <button type="submit" class="createBtn">Edytuj dane</button>
+</form>
+
+</body>
+</html>

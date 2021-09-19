@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #090B06;
+}
+
+.filter{
+    background: url("../img/background_for_admin_panel.jpg") center no-repeat;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    filter: blur(5px);
+}
+
+.create{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 10px;
+}
+
+.create h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+    text-transform: uppercase;
+    color: #FFFDD4;
+    margin-top: 10px;
+}
+
+.create form{
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .txt_field, .date_field{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+
+form .txt_field input, .date_field input, .option_field{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    color: #a6a6a6;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.txt_field label, .date_field label, .option_field label{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+form .date_field p{
+    color: #a6a6a6;
+}
+
+::-webkit-calendar-picker-indicator{
+    color: black;
+    background-color: #adadad;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.createBtn{
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #EFE6DD;
+    width: 110px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+    /*-webkit-transition-duration: 0.3s;*/
+    /*-webkit-transition-property: box-shadow, transform;*/
+    /*transition-property: box-shadow, transform;*/
+}
+
+form .txt_field p{
+    color: #a6a6a6;
+
+}
+
+form .checkbox p{
+    color: #a6a6a6;
+}
+
+form .option_field p{
+    color: #a6a6a6;
+}
+
+form .txt_field select{
+/*padding: 8px 12px;*/
+    color: #333333;
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form .option_field{
+    margin: 15px 0;
+}
+
+
+
+

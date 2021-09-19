@@ -1,11 +1,11 @@
 package pl.overlook.springhotelreservation.domain.guest;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Entity
 public class Guest {
@@ -15,25 +15,23 @@ public class Guest {
     private Long id;
 
     @NotNull(message = "Imie nie może być puste")
-    @Size(min = 2, max = 45, message = "Imię musi mieścić się w przedziale między 2, a 45 znaków")
+    @Size(min = 2, max = 45, message = "Imię musi mieścić się w przedziale między 2, a 45 znpaków")
     private String firstName;
 
     @NotNull(message = "Nazwisko nie może być puste")
     @Size(min = 2, max = 45, message = "Nazwisko musi mieścić się w przedziale między 2, a 45 znaków")
     private String lastName;
 
-    private boolean underEighteen;
-
-    private boolean reservationPerson;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
 
     public Guest() {
     }
 
-    public Guest(String firstName, String lastName, boolean isUnderEighteen, boolean isReservationPerson) {
+    public Guest(String firstName, String lastName, LocalDate birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.underEighteen = underEighteen;
-        this.reservationPerson = reservationPerson;
+        this.birthDate = birthDate;
     }
 
     public Long getId() {
@@ -60,19 +58,13 @@ public class Guest {
         this.lastName = lastName;
     }
 
-    public boolean isUnderEighteen() {
-        return underEighteen;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setUnderEighteen(boolean underEighteen) {
-        this.underEighteen = underEighteen;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public boolean isReservationPerson() {
-        return reservationPerson;
-    }
 
-    public void setReservationPerson(boolean reservationPerson) {
-        this.reservationPerson = reservationPerson;
-    }
 }

@@ -19,6 +19,7 @@ public class Room {
     @ElementCollection
     private List<BedType> beds;
 
+    @Enumerated
     private RoomType roomType;
 
     private boolean panoramicView;
