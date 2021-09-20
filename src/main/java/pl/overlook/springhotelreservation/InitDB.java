@@ -55,16 +55,13 @@ public class InitDB implements CommandLineRunner {
 
         LocalDate firstGuestBirthDay = LocalDate.of(1970, 3, 1);
         LocalDate secondGuestBirthDay = LocalDate.of(1975, 8, 25);
-        LocalDate thirdGuestBirthDay = LocalDate.of(2012, 12, 18);
 
         Guest guest1 = new Guest("Jack", "Torrance", firstGuestBirthDay);
         Guest guest2 = new Guest("Wendy", "Torrance", secondGuestBirthDay);
-        Guest guest3 = new Guest("Danny", "Torrance", thirdGuestBirthDay);
 
 
         guestService.createNewGuest(guest1);
         guestService.createNewGuest(guest2);
-        guestService.createNewGuest(guest3);
 
         roomService.createNewRoom(room1);
         roomService.createNewRoom(room2);
@@ -72,19 +69,15 @@ public class InitDB implements CommandLineRunner {
 
         LocalDate firstReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 1);
         LocalDate secondReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 2);
-        LocalDate thirdReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 3);
 
         LocalDate firstReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 7);
         LocalDate secondReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 8);
-        LocalDate thirdReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 9);
 
         Reservation firstReservation = new Reservation(room1, guest1, firstReservationStartDate, firstReservationEndDate);
         Reservation secondReservation = new Reservation(room2, guest2, secondReservationStartDate, secondReservationEndDate);
-        Reservation thirdReservation = new Reservation(room3, guest3, thirdReservationStartDate, thirdReservationEndDate);
 
         reservationService.createNewReservation(firstReservation);
         reservationService.createNewReservation(secondReservation);
-        reservationService.createNewReservation(thirdReservation);
 
 
         System.out.println("Current guest count: " + guestService.getAllGuests().size());

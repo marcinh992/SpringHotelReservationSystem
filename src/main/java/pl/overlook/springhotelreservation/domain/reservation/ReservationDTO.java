@@ -2,13 +2,16 @@ package pl.overlook.springhotelreservation.domain.reservation;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Future;
 import java.time.LocalDate;
 
 public class ReservationDTO {
 
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fromDate;
 
+    @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate toDate;
 

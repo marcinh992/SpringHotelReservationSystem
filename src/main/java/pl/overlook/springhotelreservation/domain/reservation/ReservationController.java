@@ -103,21 +103,15 @@ public class ReservationController {
     @PostMapping(value = "/roomChoosing")
     public String guestChoosingRoom(ReservationDTO reservationDTO, Model model) {
 
-        System.out.println("Dostałem");
-
         model.addAttribute("fromDate", reservationDTO.getFromDate());
         model.addAttribute("toDate", reservationDTO.getToDate());
 
-//        wyszukaj wolne pokoje w tym termienie
         List<Room> listRooms = roomService.getAvailableRooms(reservationDTO.getFromDate(), reservationDTO.getToDate());
         model.addAttribute("listRooms", listRooms);
 
         return "roomChoosing";
     }
 
-////    getmapping na reservation zeby obsłużyć parametry
-    //dodać potwierdzenie rezerwacja poprzez email
-    // dodać logikę taska który co jakiś interwał będzie sprawdzał i usuwał niekompletne rezerwacje
 
     @GetMapping("/reservation")
     public String guestCreatingNewGuest(
@@ -126,9 +120,9 @@ public class ReservationController {
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate toDate,
             Model model) {
 
-        Reservation newReservation = reservationService.guestCreatingReservation(fromDate, toDate, room);
+        Reservation temporaryReservation = reservationService.guestCreatingReservation(fromDate, toDate, room);
 
-        model.addAttribute("idReservation", newReservation.getId());
+        model.addAttribute("idReservation", temporaryReservation.getId());
         model.addAttribute("guest", new Guest());
 
 
@@ -136,22 +130,29 @@ public class ReservationController {
     }
 
     @PostMapping("/finalStep")
-    public String finalizeReservation(Guest guest, @RequestParam Long idReservation){
+    public String finalizeReservation(Guest guest, @RequestParam Long idReservation, Model model) {
 
         guestService.createNewGuest(guest);
 
-        Reservation finalReservation = reservationService.findReservationById(idReservation);
+        Reservation temporaryReservation = reservationService.findReservationById(idReservation);
 
-        finalReservation.setGuest(guest);
+        //making new reservation once again is necessary cause reservations.html template don't want to show guest info
+        // when adding guest via 'finalReservation.setGuest(guest)'
+
+        Reservation finalReservation = new Reservation(temporaryReservation.getId(), temporaryReservation.getRoom(), guest,
+                temporaryReservation.getFromDate(), temporaryReservation.getToDate());
+
+        reservationService.createNewReservation(finalReservation);
+
+        System.out.println(finalReservation);
+
+        model.addAttribute("finalReservation", finalReservation);
+        model.addAttribute("idReservation", idReservation);
 
 
         return "reservationComplited";
 
     }
-
-
-
-
 
 
 }

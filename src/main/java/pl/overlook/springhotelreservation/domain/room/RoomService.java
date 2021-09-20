@@ -19,6 +19,9 @@ public class RoomService {
     ReservationService reservationService;
 
     public void createNewRoom(Room room) {
+
+        deleteAllNoneBedTypeValue(room);
+
         repository.save(room);
     }
 
@@ -76,6 +79,11 @@ public class RoomService {
             room.setId(existingRoom.getId());
             this.repository.save(room);
         }
+    }
+
+    public void deleteAllNoneBedTypeValue(Room room){
+
+        room.getBeds().removeIf(n -> n.equals(BedType.NONE));
     }
 
 }

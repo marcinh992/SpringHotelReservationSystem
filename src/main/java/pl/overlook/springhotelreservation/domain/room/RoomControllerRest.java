@@ -21,20 +21,4 @@ public class RoomControllerRest {
     public Room getSingleRoom(@PathVariable Long id) {
         return roomService.findRoomById(id);
     }
-
-    @PostMapping("/rooms")
-    public void createRoom(@RequestBody Room room) {
-        roomService.createNewRoom(room);
-    }
-
-    @DeleteMapping("/rooms/{id}")
-    public void deleteRoom(@PathVariable Long id) {
-        roomService.deleteRoom(id);
-    }
-
-    @PutMapping("/rooms/{id}")
-    public void updateRoom(@PathVariable Long id, @RequestBody Room room) {
-        this.roomService.updateRoom(id, room);
-    }
-
 }

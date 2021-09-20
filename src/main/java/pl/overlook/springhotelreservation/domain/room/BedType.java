@@ -4,5 +4,7 @@ public enum BedType {
     NONE,
     SINGLE,
     DOUBLE,
-    KING_SIZE;
+    KING_SIZE
+
+
 }

@@ -5,6 +5,7 @@ import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.room.Room;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import java.time.LocalDate;
 
 @Entity
@@ -24,6 +25,7 @@ public class Reservation {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fromDate;
 
+    @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate toDate;
 
@@ -44,6 +46,14 @@ public class Reservation {
 
     public Reservation(Room room, LocalDate fromDate, LocalDate toDate) {
         this.room = room;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
+    }
+
+    public Reservation(Long id, Room room, Guest guest, LocalDate fromDate, LocalDate toDate) {
+        this.id = id;
+        this.room = room;
+        this.guest = guest;
         this.fromDate = fromDate;
         this.toDate = toDate;
     }
@@ -88,4 +98,14 @@ public class Reservation {
         this.toDate = toDate;
     }
 
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", room=" + room +
+                ", guest=" + guest +
+                ", fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                '}';
+    }
 }

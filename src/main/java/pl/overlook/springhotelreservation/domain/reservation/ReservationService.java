@@ -8,6 +8,8 @@ import pl.overlook.springhotelreservation.domain.room.Room;
 import pl.overlook.springhotelreservation.domain.room.RoomService;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,20 +43,6 @@ public class ReservationService {
 
         return repository.save(guestReservation);
     }
-
-
-//    UWAGA MANEWRY WYBUCHOWE !!!!
-
-    public void puttingGuestIntoUncompletedReservation(Long idGuest, Long idReservation){
-
-        Guest guest = guestService.findGuestById(idGuest);
-
-        Reservation reservation = findReservationById(idReservation);
-
-        reservation.setGuest(guest);
-    }
-
-//    KONIEC MANEWRÓW
 
 
     public List<Reservation> getAllReservations() {

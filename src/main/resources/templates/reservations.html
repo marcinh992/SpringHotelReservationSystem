@@ -16,6 +16,7 @@
 <table class="table">
     <thead>
     <tr>
+        <th>ID</th>
         <th>Od</th>
         <th>Do</th>
         <th>ID Pokoju</th>
@@ -28,10 +29,11 @@
     </thead>
     <tbody>
     <tr th:each="reservation : ${reservations}">
+        <td th:text="${reservation.getId()}"></td>
         <td th:text="${reservation.getFromDate()}"></td>
         <td th:text="${reservation.getToDate()}"></td>
         <td th:text="${reservation.getRoom().getId()}"></td>
-        <td th:text="${reservation.getGuest()} ? ${reservation.getGuest()} : 'REZERWACJA W TOKU!'"></td>
+        <td th:text="${reservation.guest} ? ${reservation.guest} : 'REZERWACJA W TOKU!'"></td>
         <td>
             <button><a th:href="${'/reservation/delete/'+reservation.getId()}">Usuń</a></button>
         </td>
