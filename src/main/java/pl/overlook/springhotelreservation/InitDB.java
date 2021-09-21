@@ -52,6 +52,15 @@ public class InitDB implements CommandLineRunner {
         Room room1 = new Room(51, bedsForRoom1, RoomType.STANDARD, true);
         Room room2 = new Room(52, bedsForRoom2, RoomType.LUXURY, false);
         Room room3 = new Room(53, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room4 = new Room(55, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room5 = new Room(58, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room6 = new Room(60, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room7 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room8 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room9 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room10 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room11 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room12 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
 
         LocalDate firstGuestBirthDay = LocalDate.of(1970, 3, 1);
         LocalDate secondGuestBirthDay = LocalDate.of(1975, 8, 25);
@@ -66,6 +75,15 @@ public class InitDB implements CommandLineRunner {
         roomService.createNewRoom(room1);
         roomService.createNewRoom(room2);
         roomService.createNewRoom(room3);
+        roomService.createNewRoom(room4);
+        roomService.createNewRoom(room5);
+        roomService.createNewRoom(room6);
+        roomService.createNewRoom(room7);
+        roomService.createNewRoom(room8);
+        roomService.createNewRoom(room9);
+        roomService.createNewRoom(room10);
+        roomService.createNewRoom(room11);
+        roomService.createNewRoom(room12);
 
         LocalDate firstReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 1);
         LocalDate secondReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 2);

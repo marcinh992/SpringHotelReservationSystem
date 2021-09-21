@@ -14,7 +14,7 @@ body {
     background-color: #090B06;
 }
 
-.filter{
+.filter {
     background: url("../img/background_for_admin_panel.jpg") center no-repeat;
     position: absolute;
     height: 100vh;
@@ -22,7 +22,7 @@ body {
     filter: blur(5px);
 }
 
-table{
+table {
     position: absolute;
     z-index: 2;
     left: 50%;
@@ -93,6 +93,46 @@ button {
 button:hover, button:focus, button:active {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.1);
+}
+
+
+ul{
+    background-color: #a6a6a6;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top: 30%;
+    display: flex;
+    padding: 0;
+    border-radius: 4px;
+
+}
+
+ul li {
+    list-style: none;
+}
+
+ul li .paginationButton, ul li .pages {
+    display: block;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: #fff;
+    color: #262626;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 5px;
+    box-shadow: inset 0 5px 10px rgba(0,0,0,.1);
+}
+
+ul li .paginationButton{
+    width: 70px;
+}
+
+ul li .pages{
+    min-width: 70px;
+    width: auto;
 }
 
 

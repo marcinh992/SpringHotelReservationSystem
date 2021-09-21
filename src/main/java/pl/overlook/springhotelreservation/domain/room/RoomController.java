@@ -1,13 +1,11 @@
 package pl.overlook.springhotelreservation.domain.room;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -18,12 +16,10 @@ public class RoomController {
     @Autowired
     RoomService roomService;
 
-    @RequestMapping("/rooms")
-    public String getRooms(Model model) {
-        List<Room> allRooms = roomService.getAllRooms();
-        model.addAttribute("rooms", allRooms);
 
-        return "rooms";
+    @GetMapping("/rooms")
+    public String getRooms(Model model) {
+        return findPaginated(1, model);
     }
 
     @RequestMapping("/newroom")
@@ -62,6 +58,22 @@ public class RoomController {
         model.addAttribute("room", room);
 
         return "update_room";
+    }
+
+    @GetMapping("/roomPage/{pageNo}")
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 10;
+
+        Page<Room> page = roomService.findPaginated(pageNo, pageSize);
+        List<Room> listRooms = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listRooms", listRooms);
+
+        return "rooms";
+
     }
 
 

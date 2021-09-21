@@ -1,6 +1,9 @@
 package pl.overlook.springhotelreservation.domain.room;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.overlook.springhotelreservation.domain.reservation.Reservation;
 import pl.overlook.springhotelreservation.domain.reservation.ReservationService;
@@ -38,6 +41,7 @@ public class RoomService {
         rooms.addAll(repository.findAll());
         return rooms;
     }
+
 
     public List<Room> getAvailableRooms(LocalDate from, LocalDate to) {
 
@@ -81,9 +85,17 @@ public class RoomService {
         }
     }
 
-    public void deleteAllNoneBedTypeValue(Room room){
+    public void deleteAllNoneBedTypeValue(Room room) {
 
         room.getBeds().removeIf(n -> n.equals(BedType.NONE));
+
+    }
+
+    public Page<Room> findPaginated(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+
+        return this.repository.findAll(pageable);
     }
 
 }

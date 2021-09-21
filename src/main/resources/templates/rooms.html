@@ -4,6 +4,8 @@
     <title>Rooms list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/css/guests.css">
+
+
 </head>
 
 <body>
@@ -22,12 +24,12 @@
         <th>Widok</th>
         <th></th>
         <th>
-           <button class="createButton"><a href="/newroom">Dodaj pokój</a></button>
+            <button class="createButton"><a href="/newroom">Dodaj pokój</a></button>
         </th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="room : ${rooms}">
+    <tr th:each="room : ${listRooms}">
         <td th:text="${room.getId()}"></td>
         <td th:text="${room.getRoomType()}"></td>
         <td th:text="${room.getNumber()}"></td>
@@ -42,6 +44,42 @@
     </tr>
     </tbody>
 </table>
+
+<!--Logic for Paging and sorting -->
+
+<div th:if="${totalPages > 1}">
+
+    <div class="row">
+
+        <ul>
+
+<!--            <li><div class="marcin">-->
+<!--                Pokoi: [[${totalItems}]]-->
+<!--            </div></li>-->
+
+            <li><div class="pages">
+            <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+                <a th:if="${currentPage != i }" th:href="@{'/roomPage/' + ${i}}">[[${i}]]</a>
+                <span th:unless="${currentPage != i }">[[${i}]]</span> &nbsp;&nbsp;
+            </span>
+            </div></li>
+
+            <li><div class="paginationButton">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${currentPage + 1}}">Next</a>
+                <span th:unless="${ currentPage < totalPages}">Next</span>
+            </div></li>
+
+            <li><div class="paginationButton">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${totalPages}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div></li>
+
+        </ul>
+
+    </div>
+
+</div>
+
 
 </body>
 </html>
