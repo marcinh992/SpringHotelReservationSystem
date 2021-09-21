@@ -15,9 +15,15 @@
 <table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Imie</th>
-        <th>Nazwisko</th>
+        <th>
+            <a th:href="@{'/guestPage/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">ID</a>
+        </th>
+        <th>
+        <a th:href="@{'/guestPage/' + ${currentPage} + '?sortField=firstName&sortDir=' + ${reverseSortDir}}">Imie</a>
+        </th>
+        <th>
+            <a th:href="@{'/guestPage/' + ${currentPage} + '?sortField=lastName&sortDir=' + ${reverseSortDir}}">Nazwisko</a>
+        </th>
         <th>Data urodzenia</th>
         <th></th>
         <th>
@@ -47,18 +53,18 @@
 
         <ul>
             <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-               <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/guestPage/' + ${i}}">[[${i}]]</a></div></li>
+               <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/guestPage/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a></div></li>
                <div class="activePage"><span th:unless="${currentPage != i }">[[${i}]]</span> &nbsp;&nbsp;</div>
             </span>
 
 
             <li><div class="paginationButton">
-                <a th:if="${currentPage < totalPages}" th:href="@{'/guestPage/' + ${currentPage + 1}}">Next</a>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/guestPage/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
                 <span th:unless="${ currentPage < totalPages}">Next</span>
             </div></li>
 
             <li><div class="paginationButton">
-                <a th:if="${currentPage < totalPages}" th:href="@{'/guestPage/' + ${totalPages}}">Last</a>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/guestPage/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
                 <span th:unless="${currentPage < totalPages}">Last</span>
             </div></li>
 

@@ -89,7 +89,6 @@ public class RoomService {
     public void deleteAllNoneBedTypeValue(Room room) {
 
         room.getBeds().removeIf(n -> n.equals(BedType.NONE));
-
     }
 
     public Page<Room> findPaginated(int pageNo, int pageSize) {

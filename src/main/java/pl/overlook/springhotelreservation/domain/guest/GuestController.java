@@ -5,10 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -23,7 +20,7 @@ public class GuestController {
     @GetMapping("/guests")
     public String getGuests(Model model) {
 
-        return findPaginated(1, model);
+        return findPaginated(1, "firstName", "asc", model);
     }
 
     @RequestMapping("/newguest")
@@ -65,15 +62,24 @@ public class GuestController {
     }
 
     @GetMapping("/guestPage/{pageNo}")
-    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
+                                @RequestParam("sortField") String sortField,
+                                @RequestParam("sortDir") String sortDir,
+                                Model model) {
+
         int pageSize = 10;
 
-        Page<Guest> page = guestService.findPaginated(pageNo, pageSize);
+        Page<Guest> page = guestService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Guest> listGuests = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
+
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
         model.addAttribute("listGuests", listGuests);
 
         return "guests";
