@@ -1,6 +1,7 @@
 package pl.overlook.springhotelreservation.domain.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,12 +28,10 @@ public class ReservationController {
     @Autowired
     RoomService roomService;
 
-    @RequestMapping("/reservations")
+    @GetMapping("/reservations")
     public String getReservations(Model model) {
-        List<Reservation> allReservations = reservationService.getAllReservations();
-        model.addAttribute("reservations", allReservations);
 
-        return "reservations";
+        return findPaginated(1, model);
     }
 
 
@@ -151,7 +150,21 @@ public class ReservationController {
 
 
         return "reservationComplited";
+    }
 
+    @GetMapping("/reservationPage/{pageNo}")
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 10;
+
+        Page<Reservation> page = reservationService.findPaginated(pageNo, pageSize);
+        List<Reservation> listReservations = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listReservations", listReservations);
+
+        return "reservations";
     }
 
 

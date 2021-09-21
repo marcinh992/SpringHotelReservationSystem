@@ -52,17 +52,16 @@
     <div class="row">
 
         <ul>
-
-<!--            <li><div class="marcin">-->
+<!--            it shows how many rooms is already in database, might be useful later if not can be deleted -->
+<!--            <li><div class="">-->
 <!--                Pokoi: [[${totalItems}]]-->
 <!--            </div></li>-->
 
-<!--            <div class="pages">-->
             <span th:each="i : ${#numbers.sequence(1, totalPages)}">
                <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/roomPage/' + ${i}}">[[${i}]]</a></div></li>
                <div class="activePage"><span th:unless="${currentPage != i }">[[${i}]]</span> &nbsp;&nbsp;</div>
             </span>
-<!--            </div>-->
+
 
             <li><div class="paginationButton">
                 <a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${currentPage + 1}}">Next</a>
@@ -75,9 +74,7 @@
             </div></li>
 
         </ul>
-
     </div>
-
 </div>
 
 

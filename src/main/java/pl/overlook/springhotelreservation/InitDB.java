@@ -65,12 +65,39 @@ public class InitDB implements CommandLineRunner {
         LocalDate firstGuestBirthDay = LocalDate.of(1970, 3, 1);
         LocalDate secondGuestBirthDay = LocalDate.of(1975, 8, 25);
 
+
         Guest guest1 = new Guest("Jack", "Torrance", firstGuestBirthDay);
         Guest guest2 = new Guest("Wendy", "Torrance", secondGuestBirthDay);
+        Guest guest3 = new Guest("Tony", "Stark", secondGuestBirthDay);
+        Guest guest4 = new Guest("Chris", "Jakiśtam", secondGuestBirthDay);
+        Guest guest5 = new Guest("Anoty", "Hopkins", secondGuestBirthDay);
+        Guest guest6 = new Guest("Marcin", "Pypeć", secondGuestBirthDay);
+        Guest guest7 = new Guest("Dariusz", "Szpakowski", secondGuestBirthDay);
+        Guest guest8 = new Guest("Roman", "Polański", secondGuestBirthDay);
+        Guest guest9 = new Guest("Artur", "Nowak", secondGuestBirthDay);
+        Guest guest10 = new Guest("Eliza", "Inna", secondGuestBirthDay);
+        Guest guest11 = new Guest("Marta", "Takatam", secondGuestBirthDay);
+        Guest guest12 = new Guest("Agata", "Jeszczeinna", secondGuestBirthDay);
+        Guest guest13 = new Guest("Agnieszka", "Niewiem", secondGuestBirthDay);
+        Guest guest14 = new Guest("Romualda", "Kijwie", secondGuestBirthDay);
+
+
 
 
         guestService.createNewGuest(guest1);
         guestService.createNewGuest(guest2);
+        guestService.createNewGuest(guest3);
+        guestService.createNewGuest(guest4);
+        guestService.createNewGuest(guest5);
+        guestService.createNewGuest(guest6);
+        guestService.createNewGuest(guest7);
+        guestService.createNewGuest(guest8);
+        guestService.createNewGuest(guest9);
+        guestService.createNewGuest(guest10);
+        guestService.createNewGuest(guest11);
+        guestService.createNewGuest(guest12);
+        guestService.createNewGuest(guest13);
+        guestService.createNewGuest(guest14);
 
         roomService.createNewRoom(room1);
         roomService.createNewRoom(room2);

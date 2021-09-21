@@ -26,7 +26,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="guest : ${guests}">
+    <tr th:each="guest : ${listGuests}">
         <td th:text="${guest.getId()}"></td>
         <td th:text="${guest.getFirstName()}"></td>
         <td th:text="${guest.getLastName()}"></td>
@@ -40,6 +40,31 @@
     </tr>
     </tbody>
 </table>
+
+<div th:if="${totalPages > 1}">
+
+    <div class="row">
+
+        <ul>
+            <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+               <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/guestPage/' + ${i}}">[[${i}]]</a></div></li>
+               <div class="activePage"><span th:unless="${currentPage != i }">[[${i}]]</span> &nbsp;&nbsp;</div>
+            </span>
+
+
+            <li><div class="paginationButton">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/guestPage/' + ${currentPage + 1}}">Next</a>
+                <span th:unless="${ currentPage < totalPages}">Next</span>
+            </div></li>
+
+            <li><div class="paginationButton">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/guestPage/' + ${totalPages}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div></li>
+
+        </ul>
+    </div>
+</div>
 
 </body>
 </html>

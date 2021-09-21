@@ -21,6 +21,7 @@ public class RoomService {
     @Autowired
     ReservationService reservationService;
 
+
     public void createNewRoom(Room room) {
 
         deleteAllNoneBedTypeValue(room);

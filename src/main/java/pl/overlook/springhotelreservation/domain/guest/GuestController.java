@@ -1,6 +1,7 @@
 package pl.overlook.springhotelreservation.domain.guest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,12 +20,10 @@ public class GuestController {
     GuestService guestService;
 
 
-    @RequestMapping("/guests")
+    @GetMapping("/guests")
     public String getGuests(Model model) {
-        List<Guest> allGuests = guestService.getAllGuests();
-        model.addAttribute("guests", allGuests);
 
-        return "guests";
+        return findPaginated(1, model);
     }
 
     @RequestMapping("/newguest")
@@ -64,4 +63,21 @@ public class GuestController {
 
         return "update_guest";
     }
+
+    @GetMapping("/guestPage/{pageNo}")
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 10;
+
+        Page<Guest> page = guestService.findPaginated(pageNo, pageSize);
+        List<Guest> listGuests = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listGuests", listGuests);
+
+        return "guests";
+    }
+
+
 }

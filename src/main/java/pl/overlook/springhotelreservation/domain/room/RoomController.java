@@ -19,6 +19,7 @@ public class RoomController {
 
     @GetMapping("/rooms")
     public String getRooms(Model model) {
+
         return findPaginated(1, model);
     }
 
@@ -73,7 +74,6 @@ public class RoomController {
         model.addAttribute("listRooms", listRooms);
 
         return "rooms";
-
     }
 
 

@@ -1,6 +1,9 @@
 package pl.overlook.springhotelreservation.domain.reservation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.guest.GuestService;
@@ -52,6 +55,7 @@ public class ReservationService {
         return reservations;
     }
 
+
     public void deleteReservation(Long id) {
 
         repository.deleteById(id);
@@ -61,6 +65,14 @@ public class ReservationService {
     public Reservation findReservationById(Long id) {
 
         return repository.getById(id);
+    }
+
+
+    public Page<Reservation> findPaginated(int pageNo, int pageSize){
+
+        Pageable pageable = PageRequest.of(pageNo -1, pageSize);
+
+        return this.repository.findAll(pageable);
     }
 
 
