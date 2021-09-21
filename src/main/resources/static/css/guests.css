@@ -135,4 +135,8 @@ ul li .pages{
     width: auto;
 }
 
+.activePage{
+    display: none;
+}
+
 

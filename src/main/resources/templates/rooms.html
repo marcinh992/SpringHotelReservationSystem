@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Rooms list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -57,12 +57,12 @@
 <!--                Pokoi: [[${totalItems}]]-->
 <!--            </div></li>-->
 
-            <li><div class="pages">
+<!--            <div class="pages">-->
             <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-                <a th:if="${currentPage != i }" th:href="@{'/roomPage/' + ${i}}">[[${i}]]</a>
-                <span th:unless="${currentPage != i }">[[${i}]]</span> &nbsp;&nbsp;
+               <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/roomPage/' + ${i}}">[[${i}]]</a></div></li>
+               <div class="activePage"><span th:unless="${currentPage != i }">[[${i}]]</span> &nbsp;&nbsp;</div>
             </span>
-            </div></li>
+<!--            </div>-->
 
             <li><div class="paginationButton">
                 <a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${currentPage + 1}}">Next</a>
