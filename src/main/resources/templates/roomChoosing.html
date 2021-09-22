@@ -4,15 +4,26 @@
     <title>Add guest</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/css/guestReservation.css">
 
-    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.min.js}"></script>
 
 </head>
 <body>
 
-<div class="container">
+<div class="filter">
+
+</div>
+
+<div class="step_progressbar">
+    <ul>
+        <li class="active">DATA</li>
+        <li class="active">POKÓJ</li>
+        <li>GOŚĆ</li>
+        <li>KONIEC</li>
+    </ul>
+</div>
+
+<div class="create">
 
 
     <h1>Hello room reservation</h1>
@@ -21,34 +32,29 @@
         <table class="table">
             <thead>
             <tr>
-                <td>Numer</td>
-                <td>Typ pokoju</td>
-                <td>Rodzaje łóżek</td>
-                <td>Widok</td>
-                <td>Operacje</td>
+                <th>Numer</th>
+                <th>Typ pokoju</th>
+                <th>Rodzaje łóżek</th>
+                <th>Widok</th>
+                <th>Operacje</th>
             </tr>
             </thead>
             <tbody>
-            <div class="form-group">
                 <tr th:each="room : ${listRooms}">
                     <td th:text="${room.getNumber()}"></td>
                     <td th:text="${room.getRoomType()}"></td>
                     <td th:text="${room.getBeds()}"></td>
                     <td th:text="${room.isPanoramicView()}"></td>
-                    <td><a th:href="@{/reservation(room=*{room.id},fromDate=${fromDate},toDate=${toDate})}">Zarezerwuj</a></td>
+                    <td><a class="reservBtn" th:href="@{/reservation(room=*{room.id},fromDate=${fromDate},toDate=${toDate})}">Zarezerwuj</a></td>
                 </tr>
-
-            </div>
             </tbody>
         </table>
 
 
 
-<!--    </form>-->
 
 
-<!--        <button type="submit" class="btn btn-default">Wybór pokoju</button>-->
-<!--    </form>-->
+    </form>
 
 
 

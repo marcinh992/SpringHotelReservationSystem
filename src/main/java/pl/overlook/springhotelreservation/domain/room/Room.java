@@ -74,4 +74,8 @@ public class Room {
         this.panoramicView = panoramicView;
     }
 
+    @Override
+    public String toString() {
+        return "Numer pokoju: " + id + ", " + "Typ pokoju: " + roomType + ", Rodzaje łóżek: " + beds;
+    }
 }

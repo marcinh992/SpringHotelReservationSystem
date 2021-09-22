@@ -2,17 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>REZERWACJA - podsumowanie</title>
+
+    <link rel="stylesheet" href="/css/guestReservation.css">
+
 </head>
 <body>
 
-<h1>Rezerwacja zakończona sukcesem!</h1>
-<h2>PODSUMOWANIE</h2>
+<div class="filter">
 
-<h3><td th:text="${idReservation}"></td></h3>
-<br>
-<h3><td th:text="${finalReservation}"></td></h3>
+</div>
 
+<div class="step_progressbar">
+    <ul>
+        <li class="active">DATA</li>
+        <li class="active">POKÓJ</li>
+        <li class="active">GOŚĆ</li>
+        <li class="active">KONIEC</li>
+    </ul>
+</div>
+
+<div class="create">
+
+    <h1>Rezerwacja zakończona sukcesem!</h1>
+    <h2>PODSUMOWANIE</h2>
+
+    <h3>Numer rezerwacji</h3>
+    <h4>
+        <td th:text="${finalReservation.getId()}"></td>
+    </h4>
+
+    <h3>REZERWUJĄCY</h3>
+    <h4>
+        <td th:text="${finalReservation.getGuest().getFirstName()}"></td>
+        <td th:text="${finalReservation.getGuest().getLastName()}"></td>
+    </h4>
+
+    <h3>POKÓJ</h3>
+    <h4>
+        <td th:text="${finalReservation.getRoom().toString()}"></td>
+    </h4>
+
+    <h3>DATA ROZPOCZĘCIA REZERWACJI</h3>
+    <h4>
+        <td th:text="${finalReservation.getFromDate()}"></td>
+    </h4>
+
+    <h3>DATA KOŃCA REZERWACJI</h3>
+    <h4>
+        <td th:text="${finalReservation.getToDate()}"></td>
+    </h4>
+
+    <button class="homePageBtn"><a href="#" th:href="@{/}">Strona główna</a></button>
+
+
+
+
+</div>
 
 </body>
+
 </html>

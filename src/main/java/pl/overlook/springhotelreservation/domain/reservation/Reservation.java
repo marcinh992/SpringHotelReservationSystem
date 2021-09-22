@@ -98,14 +98,4 @@ public class Reservation {
         this.toDate = toDate;
     }
 
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", room=" + room +
-                ", guest=" + guest +
-                ", fromDate=" + fromDate +
-                ", toDate=" + toDate +
-                '}';
-    }
 }
