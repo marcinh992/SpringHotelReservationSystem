@@ -16,9 +16,15 @@
 <table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Od</th>
-        <th>Do</th>
+        <th>
+            <a th:href="@{'/reservationPage/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">ID</a>
+        </th>
+        <th>
+            <a th:href="@{'/reservationPage/' + ${currentPage} + '?sortField=fromDate&sortDir=' + ${reverseSortDir}}">Od</a>
+        </th>
+        <th>
+            <a th:href="@{'/reservationPage/' + ${currentPage} + '?sortField=toDate&sortDir=' + ${reverseSortDir}}">Do</a>
+        </th>
         <th>ID Pokoju</th>
         <th>Dane Gościa</th>
         <th></th>
@@ -50,18 +56,18 @@
 
         <ul>
             <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-               <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/reservationPage/' + ${i}}">[[${i}]]</a></div></li>
+               <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/reservationPage/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a></div></li>
                <div class="activePage"><span th:unless="${currentPage != i }">[[${i}]]</span> &nbsp;&nbsp;</div>
             </span>
 
 
             <li><div class="paginationButton">
-                <a th:if="${currentPage < totalPages}" th:href="@{'/reservationPage/' + ${currentPage + 1}}">Next</a>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/reservationPage/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
                 <span th:unless="${ currentPage < totalPages}">Next</span>
             </div></li>
 
             <li><div class="paginationButton">
-                <a th:if="${currentPage < totalPages}" th:href="@{'/reservationPage/' + ${totalPages}}">Last</a>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/reservationPage/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
                 <span th:unless="${currentPage < totalPages}">Last</span>
             </div></li>
 

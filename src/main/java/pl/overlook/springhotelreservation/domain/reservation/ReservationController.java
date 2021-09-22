@@ -31,7 +31,7 @@ public class ReservationController {
     @GetMapping("/reservations")
     public String getReservations(Model model) {
 
-        return findPaginated(1, model);
+        return findPaginated(1, "id", "desc", model);
     }
 
 
@@ -153,15 +153,24 @@ public class ReservationController {
     }
 
     @GetMapping("/reservationPage/{pageNo}")
-    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
+                                @RequestParam("sortField") String sortField,
+                                @RequestParam("sortDir") String sortDir,
+                                Model model) {
+
         int pageSize = 10;
 
-        Page<Reservation> page = reservationService.findPaginated(pageNo, pageSize);
+        Page<Reservation> page = reservationService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Reservation> listReservations = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
+
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
         model.addAttribute("listReservations", listReservations);
 
         return "reservations";

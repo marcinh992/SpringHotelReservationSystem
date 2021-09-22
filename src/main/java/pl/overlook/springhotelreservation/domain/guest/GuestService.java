@@ -54,12 +54,12 @@ public class GuestService {
         }
     }
 
-    public Page<Guest> findPaginated(int pageNo, int pageSize, String sortField, String sortDir){
+    public Page<Guest> findPaginated(int pageNo, int pageSize, String sortField, String sortDir) {
 
-        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending():
-        Sort.by(sortField).descending();
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
+                Sort.by(sortField).descending();
 
-        Pageable pageable = PageRequest.of(pageNo -1, pageSize, sort);
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 
         return this.repository.findAll(pageable);
     }

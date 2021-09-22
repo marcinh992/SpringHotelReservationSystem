@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pl.overlook.springhotelreservation.domain.reservation.Reservation;
 import pl.overlook.springhotelreservation.domain.reservation.ReservationService;
@@ -91,9 +92,12 @@ public class RoomService {
         room.getBeds().removeIf(n -> n.equals(BedType.NONE));
     }
 
-    public Page<Room> findPaginated(int pageNo, int pageSize) {
+    public Page<Room> findPaginated(int pageNo, int pageSize, String sortField, String sortDir) {
 
-        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
+                Sort.by(sortField).descending();
+
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 
         return this.repository.findAll(pageable);
     }

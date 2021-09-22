@@ -17,11 +17,21 @@
 <table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Typ pokoju</th>
-        <th>Numer</th>
-        <th>Rodzaje łóżek</th>
-        <th>Widok</th>
+        <th>
+            <a th:href="@{'/roomPage/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">ID</a>
+        </th>
+        <th>Typ pokoju
+            <a th:href="@{'/roomPage/' + ${currentPage} + '?sortField=roomType&sortDir=' + ${reverseSortDir}}">Typ pokoju</a>
+        </th>
+        <th>
+            <a th:href="@{'/roomPage/' + ${currentPage} + '?sortField=number&sortDir=' + ${reverseSortDir}}">Numer</a>
+        </th>
+        <th>
+            <a th:href="@{'/roomPage/' + ${currentPage} + '?sortField=beds&sortDir=' + ${reverseSortDir}}">Rodzaje łóżek</a>
+        </th>
+        <th>
+            <a th:href="@{'/roomPage/' + ${currentPage} + '?sortField=panoramicView&sortDir=' + ${reverseSortDir}}">Widok</a>
+        </th>
         <th></th>
         <th>
             <button class="createButton"><a href="/newroom">Dodaj pokój</a></button>
@@ -58,18 +68,18 @@
 <!--            </div></li>-->
 
             <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-               <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/roomPage/' + ${i}}">[[${i}]]</a></div></li>
+               <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/roomPage/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a></div></li>
                <div class="activePage"><span th:unless="${currentPage != i }">[[${i}]]</span> &nbsp;&nbsp;</div>
             </span>
 
 
             <li><div class="paginationButton">
-                <a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${currentPage + 1}}">Next</a>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
                 <span th:unless="${ currentPage < totalPages}">Next</span>
             </div></li>
 
             <li><div class="paginationButton">
-                <a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${totalPages}}">Last</a>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/roomPage/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
                 <span th:unless="${currentPage < totalPages}">Last</span>
             </div></li>
 

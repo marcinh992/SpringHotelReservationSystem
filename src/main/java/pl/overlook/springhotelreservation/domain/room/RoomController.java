@@ -20,7 +20,7 @@ public class RoomController {
     @GetMapping("/rooms")
     public String getRooms(Model model) {
 
-        return findPaginated(1, model);
+        return findPaginated(1, "number", "asc", model);
     }
 
     @RequestMapping("/newroom")
@@ -62,15 +62,24 @@ public class RoomController {
     }
 
     @GetMapping("/roomPage/{pageNo}")
-    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
+                                @RequestParam("sortField") String sortField,
+                                @RequestParam("sortDir") String sortDir,
+                                Model model) {
+
         int pageSize = 10;
 
-        Page<Room> page = roomService.findPaginated(pageNo, pageSize);
+        Page<Room> page = roomService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Room> listRooms = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
+
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
         model.addAttribute("listRooms", listRooms);
 
         return "rooms";
