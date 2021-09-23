@@ -18,7 +18,7 @@
     <ul>
         <li class="active">DATA</li>
         <li class="active">POKÓJ</li>
-        <li>GOŚĆ</li>
+        <li>DANE</li>
         <li>KONIEC</li>
     </ul>
 </div>
@@ -27,7 +27,7 @@
 
 
     <h1>Hello room reservation</h1>
-    <form class="form-horizontal"  th:action="@{/roomChoosing}" th:method="post">
+    <form class="form-horizontal" th:action="@{/roomChoosing}" th:method="post">
 
         <table class="table">
             <thead>
@@ -40,23 +40,20 @@
             </tr>
             </thead>
             <tbody>
-                <tr th:each="room : ${listRooms}">
-                    <td th:text="${room.getNumber()}"></td>
-                    <td th:text="${room.getRoomType()}"></td>
-                    <td th:text="${room.getBeds()}"></td>
-                    <td th:text="${room.isPanoramicView()}"></td>
-                    <td><a class="reservBtn" th:href="@{/reservation(room=*{room.id},fromDate=${fromDate},toDate=${toDate})}">Zarezerwuj</a></td>
-                </tr>
+            <tr th:each="room : ${listRooms}">
+                <td th:text="${room.getNumber()}"></td>
+                <td th:text="${room.getRoomType()}"></td>
+                <td th:text="${room.getBeds()}"></td>
+                <td th:text="${room.isPanoramicView()}"></td>
+                <td><a class="reservBtn"
+                       th:href="@{/reservation(room=*{room.id},fromDate=${fromDate},toDate=${toDate})}">Zarezerwuj</a>
+                </td>
+            </tr>
             </tbody>
         </table>
 
 
-
-
-
     </form>
-
-
 
 
 </div>
