@@ -77,7 +77,7 @@ form .date_field input, .txt_field input {
     pointer-events: none;
 }
 
-form .date_field p{
+form .date_field p, .txt_field p{
     color: #a6a6a6;
 }
 
