@@ -1,5 +1,6 @@
 package pl.overlook.springhotelreservation.domain.reservation;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.room.Room;
@@ -7,6 +8,7 @@ import pl.overlook.springhotelreservation.domain.room.Room;
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Reservation {
@@ -29,14 +31,18 @@ public class Reservation {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate toDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDateTime createdDate;
+
     public Reservation() {
     }
 
-    public Reservation(Room room, Guest guest, LocalDate fromDate, LocalDate toDate) {
+    public Reservation(Room room, Guest guest, LocalDate fromDate, LocalDate toDate, LocalDateTime createdDate) {
         this.room = room;
         this.guest = guest;
         this.fromDate = fromDate;
         this.toDate = toDate;
+        this.createdDate = createdDate;
     }
 
     public Reservation(LocalDate fromDate, LocalDate toDate) {
@@ -44,18 +50,21 @@ public class Reservation {
         this.toDate = toDate;
     }
 
-    public Reservation(Room room, LocalDate fromDate, LocalDate toDate) {
+    public Reservation(Room room, LocalDate fromDate, LocalDate toDate, LocalDateTime createdDate) {
         this.room = room;
         this.fromDate = fromDate;
         this.toDate = toDate;
+        this.createdDate = createdDate;
+
     }
 
-    public Reservation(Long id, Room room, Guest guest, LocalDate fromDate, LocalDate toDate) {
+    public Reservation(Long id, Room room, Guest guest, LocalDate fromDate, LocalDate toDate, LocalDateTime createdDate) {
         this.id = id;
         this.room = room;
         this.guest = guest;
         this.fromDate = fromDate;
         this.toDate = toDate;
+        this.createdDate = createdDate;
     }
 
     public Long getId() {
@@ -98,4 +107,11 @@ public class Reservation {
         this.toDate = toDate;
     }
 
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
 }

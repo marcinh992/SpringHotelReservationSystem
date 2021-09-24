@@ -14,6 +14,7 @@ import pl.overlook.springhotelreservation.domain.room.RoomService;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -120,6 +121,9 @@ public class ReservationController {
             Model model) {
 
         Reservation temporaryReservation = reservationService.guestCreatingReservation(fromDate, toDate, room);
+        System.out.println("Utworzono tymczasową rezerwację o ID:" + temporaryReservation.getId() + " o godzinie: "
+         + LocalDateTime.now());
+        reservationService.addReservationIdToUnconfirmedReservationsList(temporaryReservation.getId());
 
         model.addAttribute("idReservation", temporaryReservation.getId());
         model.addAttribute("guest", new Guest());
@@ -139,7 +143,9 @@ public class ReservationController {
         // when adding guest via 'finalReservation.setGuest(guest)'
 
         Reservation finalReservation = new Reservation(temporaryReservation.getId(), temporaryReservation.getRoom(), guest,
-                temporaryReservation.getFromDate(), temporaryReservation.getToDate());
+                temporaryReservation.getFromDate(), temporaryReservation.getToDate(), temporaryReservation.getCreatedDate());
+
+        reservationService.removeReservationIdFromUnconfirmedList(finalReservation.getId());
 
         reservationService.createNewReservation(finalReservation);
 
