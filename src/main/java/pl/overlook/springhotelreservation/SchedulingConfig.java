@@ -14,10 +14,10 @@ import pl.overlook.springhotelreservation.domain.reservation.ReservationService;
 public class SchedulingConfig {
 
     @Autowired
-ReservationService reservationService;
+    ReservationService reservationService;
 
-    @Scheduled(initialDelayString ="PT15M", fixedDelayString = "PT15M")
-    void deleteUnconfirmedReservations(){
+    @Scheduled(initialDelayString = "PT15M", fixedDelayString = "PT15M")
+    void deleteUnconfirmedReservations() {
 
         reservationService.removeUnconfirmedReservations();
     }

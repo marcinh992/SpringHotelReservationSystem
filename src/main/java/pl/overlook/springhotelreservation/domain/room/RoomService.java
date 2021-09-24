@@ -47,36 +47,6 @@ public class RoomService {
     }
 
 
-    public List<Room> getAvailableRooms(LocalDate from, LocalDate to) {
-
-        if (from == null || to == null) {
-            throw new IllegalArgumentException("Parameters cannot be null");
-        }
-
-        if (to.isBefore(from)) {
-            throw new IllegalArgumentException("End date cannot be before start date");
-        }
-
-        List<Room> availableRooms = this.getAllRooms();
-
-        List<Reservation> reservations = this.reservationService.getAllReservations();
-
-        for (Reservation reservation : reservations) {
-            if (reservation.getFromDate().equals(from)) {
-                availableRooms.remove(reservation.getRoom());
-            } else if (reservation.getToDate().equals(to)) {
-                availableRooms.remove(reservation.getRoom());
-            } else if (reservation.getFromDate().isAfter(from) && reservation.getFromDate().isBefore(to)) {
-                availableRooms.remove(reservation.getRoom());
-            } else if (reservation.getToDate().isAfter(from) && reservation.getToDate().isBefore(to)) {
-                availableRooms.remove(reservation.getRoom());
-            } else if (from.isAfter(reservation.getFromDate()) && to.isBefore(reservation.getToDate())) {
-                availableRooms.remove(reservation.getRoom());
-            }
-        }
-        return availableRooms;
-    }
-
     public void updateRoom(Long id, Room room) {
 
         Room existingRoom = this.findRoomById(id);
@@ -118,5 +88,55 @@ public class RoomService {
         }
         return size;
     }
+
+    public List<Room> findEnoughSizeRooms(int roomSize) {
+
+        List<Room> fittedRooms = getAllRooms();
+
+        for (int i = 0; i < fittedRooms.size(); i++) {
+
+            if (fittedRooms.get(i).getSize() < roomSize) {
+                fittedRooms.remove(i);
+            }
+
+        }
+        return fittedRooms;
+    }
+
+    public void getAvailableRooms(LocalDate from, LocalDate to, List<Room> fittedSizeRooms) {
+
+        if (from == null || to == null) {
+            throw new IllegalArgumentException("Parameters cannot be null");
+        }
+        if (to.isBefore(from)) {
+            throw new IllegalArgumentException("End date cannot be before start date");
+        }
+
+        List<Reservation> reservations = this.reservationService.getAllReservations();
+
+        for (Reservation reservation : reservations) {
+            if (reservation.getFromDate().equals(from)) {
+                fittedSizeRooms.remove(reservation.getRoom());
+            } else if (reservation.getToDate().equals(to)) {
+                fittedSizeRooms.remove(reservation.getRoom());
+            } else if (reservation.getFromDate().isAfter(from) && reservation.getFromDate().isBefore(to)) {
+                fittedSizeRooms.remove(reservation.getRoom());
+            } else if (reservation.getToDate().isAfter(from) && reservation.getToDate().isBefore(to)) {
+                fittedSizeRooms.remove(reservation.getRoom());
+            } else if (from.isAfter(reservation.getFromDate()) && to.isBefore(reservation.getToDate())) {
+                fittedSizeRooms.remove(reservation.getRoom());
+            }
+        }
+    }
+
+    public List<Room> showAvailableAndFittedSizeRooms(int roomSize, LocalDate from, LocalDate to) {
+
+        List<Room> sortedRooms = findEnoughSizeRooms(roomSize);
+
+        getAvailableRooms(from, to, sortedRooms);
+
+        return sortedRooms;
+    }
+
 
 }

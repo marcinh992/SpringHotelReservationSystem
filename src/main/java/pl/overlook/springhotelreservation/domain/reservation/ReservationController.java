@@ -105,8 +105,12 @@ public class ReservationController {
 
         model.addAttribute("fromDate", reservationDTO.getFromDate());
         model.addAttribute("toDate", reservationDTO.getToDate());
+        model.addAttribute("roomSize", reservationDTO.getRoomSize());
 
-        List<Room> listRooms = roomService.getAvailableRooms(reservationDTO.getFromDate(), reservationDTO.getToDate());
+//        List<Room> listRooms = roomService.getAvailableRooms(reservationDTO.getFromDate(), reservationDTO.getToDate());
+        List<Room> listRooms = roomService.showAvailableAndFittedSizeRooms(reservationDTO.getRoomSize(),
+                reservationDTO.getFromDate(), reservationDTO.getToDate());
+
         model.addAttribute("listRooms", listRooms);
 
         return "roomChoosing";

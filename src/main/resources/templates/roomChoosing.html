@@ -34,6 +34,7 @@
             <tr>
                 <th>Numer</th>
                 <th>Typ pokoju</th>
+                <th>Max osób</th>
                 <th>Rodzaje łóżek</th>
                 <th>Widok</th>
                 <th>Operacje</th>
@@ -43,6 +44,7 @@
             <tr th:each="room : ${listRooms}">
                 <td th:text="${room.getNumber()}"></td>
                 <td th:text="${room.getRoomType()}"></td>
+                <td th:text="${room.getSize()}"></td>
                 <td th:text="${room.getBeds()}"></td>
                 <td th:text="${room.isPanoramicView()}"></td>
                 <td><a class="reservBtn"
