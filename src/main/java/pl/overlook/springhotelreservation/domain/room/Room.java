@@ -19,6 +19,8 @@ public class Room {
     @ElementCollection
     private List<BedType> beds;
 
+    private int size;
+
     @Enumerated
     private RoomType roomType;
 
@@ -72,6 +74,14 @@ public class Room {
 
     public void setPanoramicView(boolean panoramicView) {
         this.panoramicView = panoramicView;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     @Override

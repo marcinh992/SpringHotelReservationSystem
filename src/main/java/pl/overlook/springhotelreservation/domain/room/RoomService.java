@@ -27,6 +27,8 @@ public class RoomService {
 
         deleteAllNoneBedTypeValue(room);
 
+        room.setSize(calculateRoomSize(room));
+
         repository.save(room);
     }
 
@@ -87,11 +89,6 @@ public class RoomService {
         }
     }
 
-    public void deleteAllNoneBedTypeValue(Room room) {
-
-        room.getBeds().removeIf(n -> n.equals(BedType.NONE));
-    }
-
     public Page<Room> findPaginated(int pageNo, int pageSize, String sortField, String sortDir) {
 
         Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
@@ -100,6 +97,26 @@ public class RoomService {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 
         return this.repository.findAll(pageable);
+    }
+
+    public void deleteAllNoneBedTypeValue(Room room) {
+
+        room.getBeds().removeIf(n -> n.equals(BedType.NONE));
+    }
+
+    public int calculateRoomSize(Room room) {
+
+        int size = 0;
+
+        for (int i = 0; i < room.getBeds().size(); i++) {
+            if (room.getBeds().get(i).equals(BedType.DOUBLE) || room.getBeds().get(i).equals(BedType.KING_SIZE)) {
+                size = size + 2;
+            }
+            if (room.getBeds().get(i).equals(BedType.SINGLE)) {
+                size = size + 1;
+            }
+        }
+        return size;
     }
 
 }
