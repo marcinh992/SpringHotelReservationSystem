@@ -24,7 +24,7 @@ public class GuestService {
         if (checkingThatGuestIsAdult(guest)) {
             repository.save(guest);
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Rezerwujący musi być pełnoletni");
         }
 
     }
@@ -45,9 +45,11 @@ public class GuestService {
 
     public boolean checkingThatGuestIsAdult(Guest guest) {
 
+        int adultAge = 18;
+
         Period period = Period.between(guest.getBirthDate(), LocalDate.now());
 
-        if (period.getYears() >= 18) {
+        if (period.getYears() >= adultAge) {
             return true;
         } else {
             return false;

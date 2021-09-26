@@ -30,7 +30,7 @@ public class ReservationService {
     @Autowired
     ReservationRepository repository;
 
-    List<Long> listOfUnconfirmedReservations = new ArrayList<>();
+    List<Long> listOfIDsUnconfirmedReservations = new ArrayList<>();
 
 
     public void createNewReservation(Reservation reservation) throws IllegalArgumentException {
@@ -84,28 +84,32 @@ public class ReservationService {
 
     public void addReservationIdToUnconfirmedReservationsList(Long reservationId) {
 
-        listOfUnconfirmedReservations.add(reservationId);
+        listOfIDsUnconfirmedReservations.add(reservationId);
     }
 
     public void removeReservationIdFromUnconfirmedList(Long reservationId) {
 
-        listOfUnconfirmedReservations.remove(reservationId);
+        listOfIDsUnconfirmedReservations.remove(reservationId);
     }
 
     public void removeUnconfirmedReservations() {
 
-        if (listOfUnconfirmedReservations.size() > 0) {
+        int timeAfterDeleteUnconfirmedReservation = 15;
 
-            for (int i = 0; i < listOfUnconfirmedReservations.size(); i++) {
+        if (listOfIDsUnconfirmedReservations.size() > 0) {
 
-                Reservation reservation = findReservationById(listOfUnconfirmedReservations.get(i));
+            for (int i = 0; i < listOfIDsUnconfirmedReservations.size(); i++) {
+
+                Reservation reservation = findReservationById(listOfIDsUnconfirmedReservations.get(i));
 
                 long minutesAfterCreatedUnconfirmedReservation =
                         ChronoUnit.MINUTES.between(reservation.getCreatedDate(), LocalDateTime.now());
 
-                if (reservation.getGuest() == null && minutesAfterCreatedUnconfirmedReservation > 15) {
+                if (reservation.getGuest() == null &&
+                        minutesAfterCreatedUnconfirmedReservation > timeAfterDeleteUnconfirmedReservation) {
+
                     deleteReservation(reservation.getId());
-                    listOfUnconfirmedReservations.remove(i);
+                    listOfIDsUnconfirmedReservations.remove(i);
                     System.out.println("Usunięto niedokończoną rezerwację o ID: " + reservation.getId() + " o godzinie:"
                             + LocalDateTime.now());
                 }

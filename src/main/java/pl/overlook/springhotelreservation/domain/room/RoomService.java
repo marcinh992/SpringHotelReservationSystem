@@ -47,6 +47,7 @@ public class RoomService {
     }
 
 
+
     public void updateRoom(Long id, Room room) {
 
         Room existingRoom = this.findRoomById(id);
@@ -91,7 +92,7 @@ public class RoomService {
 
     public List<Room> findEnoughSizeRooms(int roomSize) {
 
-        List<Room> fittedRooms = getAllRooms();
+        List<Room> fittedRooms = this.getAllRooms();
 
         for (int i = 0; i < fittedRooms.size(); i++) {
 
@@ -137,6 +138,8 @@ public class RoomService {
 
         return sortedRooms;
     }
+
+
 
 
 }
