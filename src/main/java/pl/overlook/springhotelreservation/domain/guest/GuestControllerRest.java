@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/guest")
 public class GuestControllerRest {
 
     @Autowired
     GuestService guestService;
 
-    @PostMapping("/guest")
+    @PostMapping("/createguest")
     public void createGuest(@RequestBody Guest guest) {
         guestService.createNewGuest(guest);
     }

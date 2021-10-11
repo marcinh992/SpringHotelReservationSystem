@@ -113,17 +113,17 @@ public class InitDB implements CommandLineRunner {
         roomService.createNewRoom(room11);
         roomService.createNewRoom(room12);
 
-        LocalDate firstReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 1);
-        LocalDate secondReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 2);
-
-        LocalDate firstReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 7);
-        LocalDate secondReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 8);
-
-        Reservation firstReservation = new Reservation(room1, guest1, firstReservationStartDate, firstReservationEndDate, LocalDateTime.now());
-        Reservation secondReservation = new Reservation(room2, guest2, secondReservationStartDate, secondReservationEndDate, LocalDateTime.now());
-
-        reservationService.createNewReservation(firstReservation);
-        reservationService.createNewReservation(secondReservation);
+//        LocalDate firstReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 1);
+//        LocalDate secondReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 2);
+//
+//        LocalDate firstReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 7);
+//        LocalDate secondReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 8);
+//
+//        Reservation firstReservation = new Reservation(room1, guest1, firstReservationStartDate, firstReservationEndDate, LocalDateTime.now());
+//        Reservation secondReservation = new Reservation(room2, guest2, secondReservationStartDate, secondReservationEndDate, LocalDateTime.now());
+//
+//        reservationService.createNewReservation(firstReservation);
+//        reservationService.createNewReservation(secondReservation);
 
 
         System.out.println("Current guest count: " + guestService.getAllGuests().size());

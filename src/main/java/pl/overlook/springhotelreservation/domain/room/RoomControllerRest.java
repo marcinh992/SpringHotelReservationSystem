@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/rooms")
 public class RoomControllerRest {
 
     @Autowired
     RoomService roomService;
 
-    @GetMapping("/rooms")
+    @GetMapping("/getallrooms")
     public List<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
 
-    @GetMapping("/rooms/{id}")
+    @GetMapping("/room/{id}")
     public Room getSingleRoom(@PathVariable Long id) {
         return roomService.findRoomById(id);
     }

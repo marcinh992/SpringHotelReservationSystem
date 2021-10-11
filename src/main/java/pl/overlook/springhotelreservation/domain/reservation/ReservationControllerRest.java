@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.overlook.springhotelreservation.domain.room.Room;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/reservation")
 public class ReservationControllerRest {
 
     @Autowired
     ReservationService reservationService;
 
-    @PostMapping("/reservation")
+    @PostMapping("/createreservation")
     public void createRoom(@RequestBody Reservation reservation) {
         reservationService.createNewReservation(reservation);
     }
