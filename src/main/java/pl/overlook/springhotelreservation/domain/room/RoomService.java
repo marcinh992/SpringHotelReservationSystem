@@ -90,20 +90,6 @@ public class RoomService {
         return size;
     }
 
-    public List<Room> findEnoughSizeRooms(int roomSize) {
-
-        List<Room> fittedRooms = this.getAllRooms();
-
-        for (int i = 0; i < fittedRooms.size(); i++) {
-
-            if (fittedRooms.get(i).getSize() < roomSize) {
-                fittedRooms.remove(i);
-            }
-
-        }
-        return fittedRooms;
-    }
-
     public void getAvailableRooms(LocalDate from, LocalDate to, List<Room> fittedSizeRooms) {
 
         if (from == null || to == null) {
@@ -132,7 +118,7 @@ public class RoomService {
 
     public List<Room> showAvailableAndFittedSizeRooms(int roomSize, LocalDate from, LocalDate to) {
 
-        List<Room> sortedRooms = findEnoughSizeRooms(roomSize);
+        List<Room> sortedRooms = this.repository.findFittedSizeRooms(roomSize);
 
         getAvailableRooms(from, to, sortedRooms);
 

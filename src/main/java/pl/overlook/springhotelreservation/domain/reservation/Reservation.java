@@ -1,6 +1,5 @@
 package pl.overlook.springhotelreservation.domain.reservation;
 
-import org.apache.tomcat.jni.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.room.Room;

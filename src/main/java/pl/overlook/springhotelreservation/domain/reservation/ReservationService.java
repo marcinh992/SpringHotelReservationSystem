@@ -30,8 +30,6 @@ public class ReservationService {
     @Autowired
     ReservationRepository repository;
 
-    List<Long> listOfIDsUnconfirmedReservations = new ArrayList<>();
-
 
     public void createNewReservation(Reservation reservation) throws IllegalArgumentException {
 
@@ -87,11 +85,11 @@ public class ReservationService {
 
         int timeAfterDeleteUnconfirmedReservation = 15;
 
-        if (listOfIDsUnconfirmedReservations.size() > 0) {
+        if (this.repository.findAllByConfirmedFalse().size() > 0) {
 
-            for (int i = 0; i < listOfIDsUnconfirmedReservations.size(); i++) {
+            for (int i = 0; i < this.repository.findAllByConfirmedFalse().size(); i++) {
 
-                Reservation reservation = findReservationById(listOfIDsUnconfirmedReservations.get(i));
+                Reservation reservation = this.repository.findAllByConfirmedFalse().get(i);
 
                 long minutesAfterCreatedUnconfirmedReservation =
                         ChronoUnit.MINUTES.between(reservation.getCreatedDate(), LocalDateTime.now());
@@ -100,7 +98,6 @@ public class ReservationService {
                         minutesAfterCreatedUnconfirmedReservation > timeAfterDeleteUnconfirmedReservation) {
 
                     deleteReservation(reservation.getId());
-                    listOfIDsUnconfirmedReservations.remove(i);
                     System.out.println("Usunięto niedokończoną rezerwację o ID: " + reservation.getId() + " o godzinie:"
                             + LocalDateTime.now());
                 }
