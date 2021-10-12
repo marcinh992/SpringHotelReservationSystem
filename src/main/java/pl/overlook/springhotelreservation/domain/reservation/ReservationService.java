@@ -46,7 +46,7 @@ public class ReservationService {
     public Reservation guestCreatingReservation(LocalDate fromDate, LocalDate toDate, Long room) {
 
         Room guestRoom = roomService.findRoomById(room);
-        Reservation guestReservation = new Reservation(guestRoom, fromDate, toDate, LocalDateTime.now());
+        Reservation guestReservation = new Reservation(guestRoom, fromDate, toDate, LocalDateTime.now(), false);
 
         return repository.save(guestReservation);
     }
@@ -82,15 +82,6 @@ public class ReservationService {
         return this.repository.findAll(pageable);
     }
 
-    public void addReservationIdToUnconfirmedReservationsList(Long reservationId) {
-
-        listOfIDsUnconfirmedReservations.add(reservationId);
-    }
-
-    public void removeReservationIdFromUnconfirmedList(Long reservationId) {
-
-        listOfIDsUnconfirmedReservations.remove(reservationId);
-    }
 
     public void removeUnconfirmedReservations() {
 

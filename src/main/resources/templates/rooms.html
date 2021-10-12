@@ -66,10 +66,6 @@
     <div class="row">
 
         <ul>
-<!--            it shows how many rooms is already in database, might be useful later if not can be deleted -->
-<!--            <li><div class="">-->
-<!--                Pokoi: [[${totalItems}]]-->
-<!--            </div></li>-->
 
             <span th:each="i : ${#numbers.sequence(1, totalPages)}">
                <li><div class="pages"> <a th:if="${currentPage != i }" th:href="@{'/roomPage/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a></div></li>

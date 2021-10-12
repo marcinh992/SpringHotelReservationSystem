@@ -34,6 +34,8 @@ public class Reservation {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime createdDate;
 
+    private boolean confirmed;
+
     public Reservation() {
     }
 
@@ -50,21 +52,23 @@ public class Reservation {
         this.toDate = toDate;
     }
 
-    public Reservation(Room room, LocalDate fromDate, LocalDate toDate, LocalDateTime createdDate) {
+    public Reservation(Room room, LocalDate fromDate, LocalDate toDate, LocalDateTime createdDate, boolean confirmed) {
         this.room = room;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.createdDate = createdDate;
+        this.confirmed=confirmed;
 
     }
 
-    public Reservation(Long id, Room room, Guest guest, LocalDate fromDate, LocalDate toDate, LocalDateTime createdDate) {
+    public Reservation(Long id, Room room, Guest guest, LocalDate fromDate, LocalDate toDate, LocalDateTime createdDate, boolean confirmed) {
         this.id = id;
         this.room = room;
         this.guest = guest;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.createdDate = createdDate;
+        this.confirmed = confirmed;
     }
 
     public Long getId() {
@@ -113,5 +117,13 @@ public class Reservation {
 
     public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
     }
 }

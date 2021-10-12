@@ -61,6 +61,7 @@ public class ReservationController {
             );
             return "reservationform";
         } else {
+            reservation.setConfirmed(true);
             reservationService.createNewReservation(reservation);
             return "redirect:/reservations";
         }
@@ -124,9 +125,9 @@ public class ReservationController {
             Model model) {
 
         Reservation temporaryReservation = reservationService.guestCreatingReservation(fromDate, toDate, room);
+
         System.out.println("Utworzono tymczasową rezerwację o ID:" + temporaryReservation.getId() + " o godzinie: "
          + LocalDateTime.now());
-        reservationService.addReservationIdToUnconfirmedReservationsList(temporaryReservation.getId());
 
         model.addAttribute("idReservation", temporaryReservation.getId());
         model.addAttribute("guest", new Guest());
@@ -146,9 +147,8 @@ public class ReservationController {
         // when adding guest via 'finalReservation.setGuest(guest)'
 
         Reservation finalReservation = new Reservation(temporaryReservation.getId(), temporaryReservation.getRoom(), guest,
-                temporaryReservation.getFromDate(), temporaryReservation.getToDate(), temporaryReservation.getCreatedDate());
-
-        reservationService.removeReservationIdFromUnconfirmedList(finalReservation.getId());
+                temporaryReservation.getFromDate(), temporaryReservation.getToDate(), temporaryReservation.getCreatedDate(),
+                temporaryReservation.isConfirmed());
 
         reservationService.createNewReservation(finalReservation);
 

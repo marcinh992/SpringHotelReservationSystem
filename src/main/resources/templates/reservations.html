@@ -20,6 +20,9 @@
             <a th:href="@{'/reservationPage/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">ID</a>
         </th>
         <th>
+            <a th:href="@{'/reservationPage/' + ${currentPage} + '?sortField=confirmed&sortDir=' + ${reverseSortDir}}">POTWIERDZONA</a>
+        </th>
+        <th>
             <a th:href="@{'/reservationPage/' + ${currentPage} + '?sortField=fromDate&sortDir=' + ${reverseSortDir}}">Od</a>
         </th>
         <th>
@@ -36,6 +39,7 @@
     <tbody>
     <tr th:each="reservation : ${listReservations}">
         <td th:text="${reservation.getId()}"></td>
+        <td th:text="${reservation.isConfirmed()}"></td>
         <td th:text="${reservation.getFromDate()}"></td>
         <td th:text="${reservation.getToDate()}"></td>
         <td th:text="${reservation.getRoom().getId()}"></td>
