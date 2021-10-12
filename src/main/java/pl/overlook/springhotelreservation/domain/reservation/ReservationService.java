@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import pl.overlook.springhotelreservation.Utils;
 import pl.overlook.springhotelreservation.domain.guest.GuestService;
 import pl.overlook.springhotelreservation.domain.room.Room;
 import pl.overlook.springhotelreservation.domain.room.RoomService;
@@ -51,10 +52,7 @@ public class ReservationService {
 
 
     public List<Reservation> getAllReservations() {
-        List<Reservation> reservations = new ArrayList<>();
-        reservations.addAll(repository.findAll());
-
-        return reservations;
+        return this.repository.findAll();
     }
 
 
@@ -83,7 +81,6 @@ public class ReservationService {
 
     public void removeUnconfirmedReservations() {
 
-        int timeAfterDeleteUnconfirmedReservation = 15;
 
         if (this.repository.findAllByConfirmedFalse().size() > 0) {
 
@@ -95,7 +92,7 @@ public class ReservationService {
                         ChronoUnit.MINUTES.between(reservation.getCreatedDate(), LocalDateTime.now());
 
                 if (reservation.getGuest() == null &&
-                        minutesAfterCreatedUnconfirmedReservation > timeAfterDeleteUnconfirmedReservation) {
+                        minutesAfterCreatedUnconfirmedReservation > Utils.MINUTES_AFTER_DELETE_UNCONFIRMED_RESERVATION) {
 
                     deleteReservation(reservation.getId());
                     System.out.println("Usunięto niedokończoną rezerwację o ID: " + reservation.getId() + " o godzinie:"

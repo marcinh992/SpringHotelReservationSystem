@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import pl.overlook.springhotelreservation.Utils;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -38,22 +39,15 @@ public class GuestService {
     }
 
     public List<Guest> getAllGuests() {
-        List<Guest> guests = new ArrayList<>();
-        guests.addAll(repository.findAll());
-        return guests;
+        return this.repository.findAll();
     }
 
     public boolean checkingThatGuestIsAdult(Guest guest) {
 
-        int adultAge = 18;
 
         Period period = Period.between(guest.getBirthDate(), LocalDate.now());
 
-        if (period.getYears() >= adultAge) {
-            return true;
-        } else {
-            return false;
-        }
+        return period.getYears() >= Utils.ADULT_AGE;
     }
 
     public Page<Guest> findPaginated(int pageNo, int pageSize, String sortField, String sortDir) {

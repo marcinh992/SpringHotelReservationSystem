@@ -41,11 +41,8 @@ public class RoomService {
     }
 
     public List<Room> getAllRooms() {
-        List<Room> rooms = new ArrayList<>();
-        rooms.addAll(repository.findAll());
-        return rooms;
+        return this.repository.findAll();
     }
-
 
 
     public void updateRoom(Long id, Room room) {
@@ -124,8 +121,6 @@ public class RoomService {
 
         return sortedRooms;
     }
-
-
 
 
 }
