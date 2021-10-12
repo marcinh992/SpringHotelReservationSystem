@@ -9,9 +9,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import pl.overlook.springhotelreservation.Utils;
 import pl.overlook.springhotelreservation.domain.guest.GuestService;
+import pl.overlook.springhotelreservation.domain.reservation.token.ConfirmationToken;
+import pl.overlook.springhotelreservation.domain.reservation.token.ConfirmationTokenService;
 import pl.overlook.springhotelreservation.domain.room.Room;
 import pl.overlook.springhotelreservation.domain.room.RoomService;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -27,6 +30,9 @@ public class ReservationService {
 
     @Autowired
     RoomService roomService;
+
+    @Autowired
+    ConfirmationTokenService confirmationTokenService;
 
     @Autowired
     ReservationRepository repository;
@@ -101,6 +107,31 @@ public class ReservationService {
             }
         }
     }
+
+    @Transactional
+    public String confirmToken(String token){
+        ConfirmationToken confirmationToken = confirmationTokenService
+                .getToken(token)
+                .orElseThrow(() ->
+                        new IllegalStateException("token not found"));
+
+        if (confirmationToken.getConfirmedAt() !=null){
+            throw new IllegalStateException("reservation already confirmed");
+        }
+
+        LocalDateTime expiredAt = confirmationToken.getExpiresAt();
+
+        if (expiredAt.isBefore(LocalDateTime.now())){
+            throw new IllegalStateException("token expired");
+        }
+
+        confirmationTokenService.setConfirmedAt(token);
+        confirmationToken.getReservation().setConfirmed(true);
+
+        return "confirmed";
+    }
+
+
 
 
 }

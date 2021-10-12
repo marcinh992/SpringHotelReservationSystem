@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.guest.GuestService;
+import pl.overlook.springhotelreservation.domain.reservation.token.ConfirmationToken;
+import pl.overlook.springhotelreservation.domain.reservation.token.ConfirmationTokenService;
 import pl.overlook.springhotelreservation.domain.room.Room;
 import pl.overlook.springhotelreservation.domain.room.RoomService;
 
@@ -16,12 +18,16 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class ReservationController {
 
     @Autowired
     ReservationService reservationService;
+
+    @Autowired
+    ConfirmationTokenService confirmationTokenService;
 
     @Autowired
     GuestService guestService;
@@ -152,7 +158,18 @@ public class ReservationController {
 
         reservationService.createNewReservation(finalReservation);
 
-        System.out.println(finalReservation);
+        ConfirmationToken token = confirmationTokenService.createNewToken(finalReservation);
+        confirmationTokenService.saveConfirmationToken(token);
+
+
+//        System.out.println(finalReservation);
+//        System.out.println("Token uwierzytelniający: " + token.getToken());
+//        System.out.println("Rezerwacja powiązana z tokenem: " + token.getReservation().getId());
+//
+//        System.out.println("----W TYM MOMENCIE KLIENT DOSTAŁ MAILA I KLIKNĄŁ CO TRZEBA---");
+//        System.out.println(reservationService.confirmToken(token.getToken()));
+//        System.out.println(token.getReservation().isConfirmed());
+
 
         model.addAttribute("finalReservation", finalReservation);
         model.addAttribute("idReservation", idReservation);
