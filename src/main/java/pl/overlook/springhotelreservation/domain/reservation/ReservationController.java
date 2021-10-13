@@ -3,6 +3,7 @@ package pl.overlook.springhotelreservation.domain.reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import pl.overlook.springhotelreservation.domain.reservation.token.ConfirmationT
 import pl.overlook.springhotelreservation.domain.reservation.token.ConfirmationTokenService;
 import pl.overlook.springhotelreservation.domain.room.Room;
 import pl.overlook.springhotelreservation.domain.room.RoomService;
+import pl.overlook.springhotelreservation.email.EmailService;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -34,6 +36,9 @@ public class ReservationController {
 
     @Autowired
     RoomService roomService;
+
+    @Autowired
+    EmailService emailService;
 
     @GetMapping("/reservations")
     public String getReservations(Model model) {
@@ -162,13 +167,19 @@ public class ReservationController {
         confirmationTokenService.saveConfirmationToken(token);
 
 
-//        System.out.println(finalReservation);
-//        System.out.println("Token uwierzytelniający: " + token.getToken());
-//        System.out.println("Rezerwacja powiązana z tokenem: " + token.getReservation().getId());
-//
-//        System.out.println("----W TYM MOMENCIE KLIENT DOSTAŁ MAILA I KLIKNĄŁ CO TRZEBA---");
-//        System.out.println(reservationService.confirmToken(token.getToken()));
-//        System.out.println(token.getReservation().isConfirmed());
+        System.out.println(finalReservation);
+        System.out.println("Token uwierzytelniający: " + token.getToken());
+        System.out.println("Rezerwacja powiązana z tokenem: " + token.getReservation().getId());
+
+//        finalReservation.getGuest().setEmail("mpypec09@gmail.com");
+
+        try {
+            emailService.sendConfirmationCode("mpypec09@gmail.com", token.getToken());
+
+        } catch (MailException e){
+            System.out.println("Failed to send email" + e.getMessage());
+        }
+
 
 
         model.addAttribute("finalReservation", finalReservation);
