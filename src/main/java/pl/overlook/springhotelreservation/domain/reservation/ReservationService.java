@@ -109,7 +109,10 @@ public class ReservationService {
     }
 
     @Transactional
-    public String confirmToken(String token){
+    public Boolean confirmToken(String token){
+
+        boolean isConfirmed = false;
+
         ConfirmationToken confirmationToken = confirmationTokenService
                 .getToken(token)
                 .orElseThrow(() ->
@@ -128,7 +131,11 @@ public class ReservationService {
         confirmationTokenService.setConfirmedAt(token);
         confirmationToken.getReservation().setConfirmed(true);
 
-        return "confirmed";
+        if (confirmationToken.getReservation().isConfirmed()){
+            isConfirmed = true;
+        }
+
+        return isConfirmed;
     }
 
 

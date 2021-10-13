@@ -18,42 +18,27 @@
         <li class="active">DATA</li>
         <li class="active">POKÓJ</li>
         <li class="active">DANE</li>
+        <li class="active">POTWIERDZENIE</li>
         <li class="active">KONIEC</li>
     </ul>
 </div>
 
 <div class="create">
 
-    <h1>Rezerwacja zakończona sukcesem!</h1>
-    <h2>PODSUMOWANIE</h2>
+<h3> Na podanego w formularzu maila został wysłany kod weryfikacyjny</h3>
 
-    <h3>Numer rezerwacji</h3>
-    <h4>
-        <td th:text="${finalReservation.getId()}"></td>
-    </h4>
+    <form th:action="@{/confirmed}" th:method="post">
 
-    <h3>REZERWUJĄCY</h3>
-    <h4>
-        <td th:text="${finalReservation.getGuest().getFirstName()}"></td>
-        <td th:text="${finalReservation.getGuest().getLastName()}"></td>
-    </h4>
+        <div class="txt_field">
+            <p>Kod weryfikujący</p>
+            <input type="text" class="form-control" name="token"/>
+        </div>
 
-    <h3>POKÓJ</h3>
-    <h4>
-        <td th:text="${finalReservation.getRoom().toString()}"></td>
-    </h4>
 
-    <h3>DATA ROZPOCZĘCIA REZERWACJI</h3>
-    <h4>
-        <td th:text="${finalReservation.getFromDate()}"></td>
-    </h4>
 
-    <h3>DATA KOŃCA REZERWACJI</h3>
-    <h4>
-        <td th:text="${finalReservation.getToDate()}"></td>
-    </h4>
+        <button type="submit" class="btn btn-default">Potwierdz</button>
 
-    <button class="homePageBtn"><a href="#" th:href="@{/}">Strona główna</a></button>
+    </form>
 
 
 </div>

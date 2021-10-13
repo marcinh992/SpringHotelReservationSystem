@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -147,6 +148,7 @@ public class ReservationController {
         return "guestCreatingGuest";
     }
 
+
     @PostMapping("/finalStep")
     public String finalizeReservation(Guest guest, @RequestParam Long idReservation, Model model) {
 
@@ -171,23 +173,40 @@ public class ReservationController {
         System.out.println("Token uwierzytelniający: " + token.getToken());
         System.out.println("Rezerwacja powiązana z tokenem: " + token.getReservation().getId());
 
-//        finalReservation.getGuest().setEmail("mpypec09@gmail.com");
-
         try {
             emailService.sendConfirmationCode("mpypec09@gmail.com", token.getToken());
-
         } catch (MailException e){
             System.out.println("Failed to send email" + e.getMessage());
         }
 
+        model.addAttribute("token", new ConfirmationToken());
 
 
-        model.addAttribute("finalReservation", finalReservation);
-        model.addAttribute("idReservation", idReservation);
 
 
         return "reservationComplited";
     }
+
+    @PostMapping("/confirmed")
+        public String confirmed(@RequestParam String token){
+
+
+        reservationService.confirmToken(token);
+        if (reservationService.confirmToken(token)){
+            return "redirect:/done";
+        } else {
+            return "redirect:/finalStep";
+        }
+
+        }
+
+        @GetMapping("/done")
+        public String reservationDone(Model model){
+
+        return "reservation-done";
+
+        }
+
 
     @GetMapping("/reservationPage/{pageNo}")
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
