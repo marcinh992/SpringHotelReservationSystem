@@ -23,8 +23,8 @@ public class EmailService {
         mail.setTo(guestEmail);
         mail.setFrom("overlookSpring@gmail.com");
         mail.setSubject("Hotel Overlook - kod weryfikacyjny");
-        mail.setText("Kod do potwierdzenia rezerwacji: " + token + " Kod jest ważny 30min, po upływie tego czasu " +
-                "niepotwierdzona rezerwacja zostanie usunięta");
+        mail.setText("Kod do potwierdzenia rezerwacji: " + token + "\n" + " Kod jest ważny 30min, po upływie tego czasu " +
+                "niepotwierdzona rezerwacja zostanie usunięta.");
 
         mailSender.send(mail);
     }
