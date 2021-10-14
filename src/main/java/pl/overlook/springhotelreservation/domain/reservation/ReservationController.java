@@ -168,13 +168,12 @@ public class ReservationController {
         ConfirmationToken token = confirmationTokenService.createNewToken(finalReservation);
         confirmationTokenService.saveConfirmationToken(token);
 
-
         System.out.println(finalReservation);
         System.out.println("Token uwierzytelniający: " + token.getToken());
         System.out.println("Rezerwacja powiązana z tokenem: " + token.getReservation().getId());
 
         try {
-            emailService.sendConfirmationCode("mpypec09@gmail.com", token.getToken());
+            emailService.sendConfirmationCode(finalReservation.getGuest().getEmail(), token.getToken());
         } catch (MailException e){
             System.out.println("Failed to send email" + e.getMessage());
         }

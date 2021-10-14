@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>REZERWACJA - KONIEC</title>
+
+    <link rel="stylesheet" href="/css/guestReservation.css">
+
 </head>
 <body>
 
-<h1>Gratulację, rezerwacja została potwierdzona</h1>
+<div class="filter">
+
+</div>
+
+<div class="step_progressbar">
+    <ul>
+        <li class="active">DATA</li>
+        <li class="active">POKÓJ</li>
+        <li class="active">DANE</li>
+        <li class="active">POTWIERDZENIE</li>
+        <li class="active">KONIEC</li>
+    </ul>
+</div>
+
+<div class="create">
+
+    <h1>Rezerwacja zakończona sukcesem!</h1>
+    <h2>Termin został potwierdzony</h2>
+
+
+    <button class="homePageBtn"><a href="#" th:href="@{/}">Strona główna</a></button>
+
+
+</div>
 
 </body>
 </html>

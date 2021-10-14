@@ -87,7 +87,6 @@ public class ReservationService {
 
     public void removeUnconfirmedReservations() {
 
-
         if (this.repository.findAllByConfirmedFalse().size() > 0) {
 
             for (int i = 0; i < this.repository.findAllByConfirmedFalse().size(); i++) {

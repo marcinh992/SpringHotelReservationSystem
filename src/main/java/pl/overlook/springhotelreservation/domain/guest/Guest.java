@@ -36,6 +36,13 @@ public class Guest {
         this.birthDate = birthDate;
     }
 
+    public Guest(String firstName, String lastName, LocalDate birthDate, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }

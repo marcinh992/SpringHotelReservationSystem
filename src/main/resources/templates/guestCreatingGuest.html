@@ -46,6 +46,11 @@
             <p th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"/>
         </div>
 
+        <div class="txt_field">
+            <input type="text" class="form-control" th:field="*{email}" placeholder="email@email.com"/>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+        </div>
+
         <input type="hidden" name="idReservation" th:value="${idReservation}"/>
 
         <button type="submit" class="createBtn">ZAREZERWUJ</button>
