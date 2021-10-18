@@ -1,10 +1,18 @@
 package pl.overlook.springhotelreservation.domain.room;
 
 public enum BedType {
-    NONE,
-    SINGLE,
-    DOUBLE,
-    KING_SIZE
+    NONE("Brak"),
+    SINGLE("Pojedyńcze"),
+    DOUBLE("Podwójne"),
+    KING_SIZE("Królewskie");
 
+    private final String displayPolishName;
 
+    BedType (String displayPolishName){
+        this.displayPolishName=displayPolishName;
+    }
+
+    public String getDisplayPolishName() {
+        return displayPolishName;
+    }
 }

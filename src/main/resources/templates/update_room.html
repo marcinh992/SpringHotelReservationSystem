@@ -32,17 +32,17 @@
 
             <select th:field="*{beds}">
                 <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType).values()}"
-                        th:value="${bedOpt}" th:text="${bedOpt}"></option>
+                        th:value="${bedOpt}" th:text="${bedOpt.displayPolishName}"></option>
 
             </select>
             <select th:field="*{beds}">
                 <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType).values()}"
-                        th:value="${bedOpt}" th:text="${bedOpt}"></option>
+                        th:value="${bedOpt}" th:text="${bedOpt.displayPolishName}"></option>
 
             </select>
             <select th:field="*{beds}">
-                <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType).values()}"
-                        th:value="${bedOpt}" th:text="${bedOpt}"></option>
+                <option th:each="bedOpt : ${T(pl.overlook.springhotelreservation.domain.room.BedType ).values()}"
+                        th:value="${bedOpt}" th:text="${bedOpt.displayPolishName}"></option>
 
             </select>
         </div>

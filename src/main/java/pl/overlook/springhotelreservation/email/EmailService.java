@@ -11,14 +11,12 @@ public class EmailService {
 
     private final JavaMailSender mailSender;
 
-
     @Autowired
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 
     public void sendConfirmationCode(String guestEmail, String token) throws MailException {
-
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setTo(guestEmail);
         mail.setFrom("overlookSpring@gmail.com");

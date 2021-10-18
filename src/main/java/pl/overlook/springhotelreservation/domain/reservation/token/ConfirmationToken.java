@@ -24,14 +24,6 @@ public class ConfirmationToken {
     public ConfirmationToken() {
     }
 
-    public ConfirmationToken(String token, LocalDateTime createdAt, LocalDateTime expiresAt, LocalDateTime confirmedAt, Reservation reservation) {
-        this.token = token;
-        this.createdAt = createdAt;
-        this.expiresAt = expiresAt;
-        this.confirmedAt = confirmedAt;
-        this.reservation = reservation;
-    }
-
     public ConfirmationToken(String token, LocalDateTime createdAt, LocalDateTime expiresAt, Reservation reservation) {
         this.token = token;
         this.createdAt = createdAt;

@@ -5,7 +5,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import pl.overlook.springhotelreservation.Utils;
 import pl.overlook.springhotelreservation.domain.guest.GuestService;
@@ -17,9 +16,7 @@ import pl.overlook.springhotelreservation.domain.room.RoomService;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,9 +38,8 @@ public class ReservationService {
     public void createNewReservation(Reservation reservation) throws IllegalArgumentException {
 
         if (reservation.getToDate().isBefore(reservation.getFromDate())) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("End date cannot be before start date");
         }
-
         repository.save(reservation);
     }
 
@@ -75,7 +71,6 @@ public class ReservationService {
 
 
     public Page<Reservation> findPaginated(int pageNo, int pageSize, String sortField, String sortDir) {
-
         Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
@@ -84,8 +79,10 @@ public class ReservationService {
         return this.repository.findAll(pageable);
     }
 
+    //method returns String because somehow this method needed to be tested
+    public String removeUnconfirmedReservations() {
 
-    public void removeUnconfirmedReservations() {
+        String message = "";
 
         if (this.repository.findAllByConfirmedFalse().size() > 0) {
 
@@ -96,20 +93,22 @@ public class ReservationService {
                 long minutesAfterCreatedUnconfirmedReservation =
                         ChronoUnit.MINUTES.between(reservation.getCreatedDate(), LocalDateTime.now());
 
-                if (reservation.getGuest() == null &&
+                if (!reservation.isConfirmed() &&
                         minutesAfterCreatedUnconfirmedReservation > Utils.MINUTES_AFTER_DELETE_UNCONFIRMED_RESERVATION) {
 
                     deleteReservation(reservation.getId());
-                    System.out.println("Usunięto niedokończoną rezerwację o ID: " + reservation.getId() + " o godzinie:"
-                            + LocalDateTime.now());
+                    message = "deleted unconfirmed reservations";
+                } else {
+                    message = "no reservations for delete";
                 }
             }
         }
+
+        return message;
     }
 
     @Transactional
-    public Boolean confirmToken(String token){
-
+    public Boolean confirmToken(String token) {
         boolean isConfirmed = false;
 
         ConfirmationToken confirmationToken = confirmationTokenService
@@ -117,27 +116,25 @@ public class ReservationService {
                 .orElseThrow(() ->
                         new IllegalStateException("token not found"));
 
-        if (confirmationToken.getConfirmedAt() !=null){
+        if (confirmationToken.getConfirmedAt() != null) {
             throw new IllegalStateException("reservation already confirmed");
         }
 
         LocalDateTime expiredAt = confirmationToken.getExpiresAt();
 
-        if (expiredAt.isBefore(LocalDateTime.now())){
+        if (expiredAt.isBefore(LocalDateTime.now())) {
             throw new IllegalStateException("token expired");
         }
 
         confirmationTokenService.setConfirmedAt(token);
         confirmationToken.getReservation().setConfirmed(true);
 
-        if (confirmationToken.getReservation().isConfirmed()){
+        if (confirmationToken.getReservation().isConfirmed()) {
             isConfirmed = true;
         }
 
         return isConfirmed;
     }
-
-
 
 
 }
