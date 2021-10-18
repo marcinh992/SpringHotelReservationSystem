@@ -16,11 +16,13 @@
         <form action="#" method="post" th:action="@{/register}" th:object="${user}">
 
             <div class="txt_field">
+                <p th:errors="*{firstName}">FirstName errors</p>
             <input th:field="*{firstName}" placeholder="Imie"/><br/>
             </div>
 
             <div class="txt_field">
-            <input th:field="*{lastName}" placeholder="Nazwisko"/><br/>
+                <p th:errors="*{lastName}">LastName errors</p>
+                <input th:field="*{lastName}" placeholder="Nazwisko"/><br/>
             </div>
 
             <div class="txt_field">

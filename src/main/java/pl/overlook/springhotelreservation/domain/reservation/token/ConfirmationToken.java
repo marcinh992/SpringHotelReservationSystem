@@ -3,6 +3,8 @@ package pl.overlook.springhotelreservation.domain.reservation.token;
 import pl.overlook.springhotelreservation.domain.reservation.Reservation;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,6 +14,8 @@ public class ConfirmationToken {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
+    @Size(min = 5, max = 5, message = "Kod weryfikacyjny musi mieć 5 znaków")
     private String token;
 
     private LocalDateTime createdAt;

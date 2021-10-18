@@ -26,7 +26,8 @@ public class User {
     @NotEmpty
     private String email;
 
-    @NotEmpty
+    @NotEmpty(message = "Hasło nie może być puste")
+    @Size(min = 5, max = 15, message = "Hasło musi zawierać minimum 5, a maksimum 15 znaków")
     private String password;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
