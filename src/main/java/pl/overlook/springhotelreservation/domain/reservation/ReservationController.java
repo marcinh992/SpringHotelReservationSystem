@@ -97,7 +97,6 @@ public class ReservationController {
         model.addAttribute("listRooms", listRooms);
         model.addAttribute("listGuests", listGuests);
 
-
         Reservation reservation = reservationService.findReservationById(id);
         model.addAttribute("reservation", reservation);
 

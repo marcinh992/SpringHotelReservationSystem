@@ -67,6 +67,7 @@ public class RoomService {
         return this.repository.findAll(pageable);
     }
 
+
     public void deleteAllNoneBedTypeValue(Room room) {
 
         room.getBeds().removeIf(n -> n.equals(BedType.NONE));
