@@ -24,9 +24,7 @@ public class RoomService {
 
 
     public void createNewRoom(Room room) {
-
         deleteAllNoneBedTypeValue(room);
-
         room.setSize(calculateRoomSize(room));
 
         repository.save(room);
@@ -46,7 +44,6 @@ public class RoomService {
 
 
     public void updateRoom(Long id, Room room) {
-
         Room existingRoom = this.findRoomById(id);
 
         if (existingRoom == null) {
@@ -69,12 +66,10 @@ public class RoomService {
 
 
     public void deleteAllNoneBedTypeValue(Room room) {
-
         room.getBeds().removeIf(n -> n.equals(BedType.NONE));
     }
 
     public int calculateRoomSize(Room room) {
-
         int size = 0;
 
         for (int i = 0; i < room.getBeds().size(); i++) {
@@ -115,13 +110,9 @@ public class RoomService {
     }
 
     public List<Room> showAvailableAndFittedSizeRooms(int roomSize, LocalDate from, LocalDate to) {
-
         List<Room> sortedRooms = this.repository.findFittedSizeRooms(roomSize);
-
         getAvailableRooms(from, to, sortedRooms);
 
         return sortedRooms;
     }
-
-
 }

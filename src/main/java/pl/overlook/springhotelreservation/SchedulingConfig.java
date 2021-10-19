@@ -18,8 +18,6 @@ public class SchedulingConfig {
 
     @Scheduled(initialDelayString = "PT15M", fixedDelayString = "PT15M")
     void deleteUnconfirmedReservations() {
-
         reservationService.removeUnconfirmedReservations();
     }
-
 }

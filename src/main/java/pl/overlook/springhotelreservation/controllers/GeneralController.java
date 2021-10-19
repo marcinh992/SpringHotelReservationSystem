@@ -11,11 +11,8 @@ public class GeneralController {
         return "index";
     }
 
-
     @RequestMapping("/staffInterface")
-    public String staffInterface(){
-
-
+    public String staffInterface() {
         return "staffInterface";
     }
 }

@@ -1,10 +1,15 @@
 package pl.overlook.springhotelreservation.domain.room;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 public class Room {
 
@@ -34,58 +39,5 @@ public class Room {
         this.beds = beds;
         this.roomType = roomType;
         this.panoramicView = panoramicView;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public List<BedType> getBeds() {
-        return beds;
-    }
-
-    public void setBeds(List<BedType> beds) {
-        this.beds = beds;
-    }
-
-    public RoomType getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(RoomType roomType) {
-        this.roomType = roomType;
-    }
-
-    public boolean isPanoramicView() {
-        return panoramicView;
-    }
-
-    public void setPanoramicView(boolean panoramicView) {
-        this.panoramicView = panoramicView;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    @Override
-    public String toString() {
-        return "Numer pokoju: " + id + ", " + "Typ pokoju: " + roomType + ", Rodzaje łóżek: " + beds;
     }
 }

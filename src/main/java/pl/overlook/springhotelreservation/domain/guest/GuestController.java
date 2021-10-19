@@ -16,7 +16,6 @@ public class GuestController {
     @Autowired
     GuestService guestService;
 
-
     @GetMapping("/guests")
     public String getGuests(Model model) {
 

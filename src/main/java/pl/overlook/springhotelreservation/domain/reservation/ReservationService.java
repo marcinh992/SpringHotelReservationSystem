@@ -45,7 +45,6 @@ public class ReservationService {
 
 
     public Reservation guestCreatingReservation(LocalDate fromDate, LocalDate toDate, Long room) {
-
         Room guestRoom = roomService.findRoomById(room);
         Reservation guestReservation = new Reservation(guestRoom, fromDate, toDate, LocalDateTime.now(), false);
 
@@ -59,13 +58,11 @@ public class ReservationService {
 
 
     public void deleteReservation(Long id) {
-
         repository.deleteById(id);
     }
 
 
     public Reservation findReservationById(Long id) {
-
         return repository.getById(id);
     }
 
@@ -79,9 +76,9 @@ public class ReservationService {
         return this.repository.findAll(pageable);
     }
 
+
     //method returns String because somehow this method needed to be tested
     public String removeUnconfirmedReservations() {
-
         String message = "";
 
         if (this.repository.findAllByConfirmedFalse().size() > 0) {
@@ -103,7 +100,6 @@ public class ReservationService {
                 }
             }
         }
-
         return message;
     }
 
@@ -132,9 +128,6 @@ public class ReservationService {
         if (confirmationToken.getReservation().isConfirmed()) {
             isConfirmed = true;
         }
-
         return isConfirmed;
     }
-
-
 }

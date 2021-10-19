@@ -1,5 +1,7 @@
 package pl.overlook.springhotelreservation.domain.reservation;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.room.Room;
@@ -9,6 +11,8 @@ import javax.validation.constraints.Future;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 public class Reservation {
 
@@ -56,8 +60,7 @@ public class Reservation {
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.createdDate = createdDate;
-        this.confirmed=confirmed;
-
+        this.confirmed = confirmed;
     }
 
     public Reservation(Long id, Room room, Guest guest, LocalDate fromDate, LocalDate toDate, LocalDateTime createdDate, boolean confirmed) {
@@ -67,62 +70,6 @@ public class Reservation {
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.createdDate = createdDate;
-        this.confirmed = confirmed;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    public Guest getGuest() {
-        return guest;
-    }
-
-    public void setGuest(Guest guest) {
-        this.guest = guest;
-    }
-
-    public LocalDate getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(LocalDate fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public LocalDate getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(LocalDate toDate) {
-        this.toDate = toDate;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public boolean isConfirmed() {
-        return confirmed;
-    }
-
-    public void setConfirmed(boolean confirmed) {
         this.confirmed = confirmed;
     }
 }

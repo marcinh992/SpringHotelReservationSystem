@@ -23,12 +23,14 @@ public class RoomController {
         return findPaginated(1, "number", "asc", model);
     }
 
+
     @RequestMapping("/newroom")
     public String createRoom(Model model) {
         model.addAttribute("room", new Room());
 
         return "roomform";
     }
+
 
     @RequestMapping(value = "/rooms", method = RequestMethod.POST)
     public String saveRoom(@Valid Room room, BindingResult bindingResult) {
@@ -46,12 +48,14 @@ public class RoomController {
         }
     }
 
+
     @RequestMapping(value = "/room/delete/{id}")
     public String deleteRoom(@PathVariable("id") Long id) {
         roomService.deleteRoom(id);
 
         return "redirect:/rooms";
     }
+
 
     @GetMapping(value = "/roomUpdateForm/{id}")
     public String roomUpdateForm(@PathVariable("id") Long id, Model model) {
@@ -60,6 +64,7 @@ public class RoomController {
 
         return "update_room";
     }
+
 
     @GetMapping("/roomPage/{pageNo}")
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
@@ -84,6 +89,4 @@ public class RoomController {
 
         return "rooms";
     }
-
-
 }

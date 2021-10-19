@@ -10,7 +10,7 @@ public class UserService {
     private static final String DEFAULT_ROLE = "ROLE_USER";
     private UserRepository userRepository;
     private UserRoleRepository userRoleRepository;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserService(PasswordEncoder passwordEncoder) {

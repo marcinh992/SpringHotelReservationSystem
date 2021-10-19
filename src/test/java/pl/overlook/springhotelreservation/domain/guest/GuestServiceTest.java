@@ -73,7 +73,7 @@ class GuestServiceTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() ->{
                     guestService.createNewGuest(guest);
-                }).withMessageContaining("Rezerwujący musi być pełnoletni");
+                }).withMessageContaining("Booking person must be adult");
     }
 
 }

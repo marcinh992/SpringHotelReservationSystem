@@ -41,6 +41,7 @@ public class ReservationController {
     @Autowired
     EmailService emailService;
 
+
     @GetMapping("/reservations")
     public String getReservations(Model model) {
 
@@ -104,14 +105,15 @@ public class ReservationController {
     }
 
 
+    //Step 1 -start
     @GetMapping(value = "/guestreservation")
     public String guestCreatingReservation() {
 
         return "guestreservation";
-
     }
 
 
+    //Step 2
     @PostMapping(value = "/roomChoosing")
     public String guestChoosingRoom(ReservationDTO reservationDTO, Model model) {
 
@@ -128,6 +130,7 @@ public class ReservationController {
     }
 
 
+    //Step 3
     @GetMapping("/reservation")
     public String guestCreatingNewGuest(
             @RequestParam Long room,
@@ -137,27 +140,22 @@ public class ReservationController {
 
         Reservation temporaryReservation = reservationService.guestCreatingReservation(fromDate, toDate, room);
 
-        System.out.println("Utworzono tymczasową rezerwację o ID:" + temporaryReservation.getId() + " o godzinie: "
-         + LocalDateTime.now());
-
         model.addAttribute("idReservation", temporaryReservation.getId());
         model.addAttribute("guest", new Guest());
-
 
         return "guestCreatingGuest";
     }
 
 
+    //Step 4
     @PostMapping("/finalStep")
     public String finalizeReservation(Guest guest, @RequestParam Long idReservation, Model model) {
 
         guestService.createNewGuest(guest);
-
         Reservation temporaryReservation = reservationService.findReservationById(idReservation);
 
         //making new reservation once again is necessary cause reservations.html template don't want to show guest info
         // when adding guest via 'finalReservation.setGuest(guest)'
-
         Reservation finalReservation = new Reservation(temporaryReservation.getId(), temporaryReservation.getRoom(), guest,
                 temporaryReservation.getFromDate(), temporaryReservation.getToDate(), temporaryReservation.getCreatedDate(),
                 temporaryReservation.isConfirmed());
@@ -167,43 +165,38 @@ public class ReservationController {
         ConfirmationToken token = confirmationTokenService.createNewToken(finalReservation);
         confirmationTokenService.saveConfirmationToken(token);
 
-        System.out.println(finalReservation);
-        System.out.println("Token uwierzytelniający: " + token.getToken());
-        System.out.println("Rezerwacja powiązana z tokenem: " + token.getReservation().getId());
-
         try {
             emailService.sendConfirmationCode(finalReservation.getGuest().getEmail(), token.getToken());
-        } catch (MailException e){
+        } catch (MailException e) {
             System.out.println("Failed to send email" + e.getMessage());
         }
 
         model.addAttribute("token", new ConfirmationToken());
 
-
-
-
         return "reservationComplited";
     }
 
-    @PostMapping("/confirmed")
-        public String confirmed(@RequestParam String token){
 
+    //step 5
+    @PostMapping("/confirmed")
+    public String confirmToken(@RequestParam String token) {
 
         reservationService.confirmToken(token);
-        if (reservationService.confirmToken(token)){
+
+        if (reservationService.confirmToken(token)) {
             return "redirect:/done";
         } else {
             return "redirect:/finalStep";
         }
+    }
 
-        }
 
-        @GetMapping("/done")
-        public String reservationDone(Model model){
+    //step 5 -end
+    @GetMapping("/done")
+    public String reservationDone() {
 
         return "reservation-done";
-
-        }
+    }
 
 
     @GetMapping("/reservationPage/{pageNo}")
@@ -229,6 +222,4 @@ public class ReservationController {
 
         return "reservations";
     }
-
-
 }

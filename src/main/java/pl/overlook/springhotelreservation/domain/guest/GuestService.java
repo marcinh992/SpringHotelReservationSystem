@@ -23,7 +23,7 @@ public class GuestService {
         if (checkingThatGuestIsAdult(guest)) {
             repository.save(guest);
         } else {
-            throw new IllegalArgumentException("Rezerwujący musi być pełnoletni");
+            throw new IllegalArgumentException("Booking person must be adult");
         }
     }
 
@@ -40,15 +40,12 @@ public class GuestService {
     }
 
     public boolean checkingThatGuestIsAdult(Guest guest) {
-
-
         Period period = Period.between(guest.getBirthDate(), LocalDate.now());
 
         return period.getYears() >= Utils.ADULT_AGE;
     }
 
     public Page<Guest> findPaginated(int pageNo, int pageSize, String sortField, String sortDir) {
-
         Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
@@ -56,6 +53,4 @@ public class GuestService {
 
         return this.repository.findAll(pageable);
     }
-
-
 }
