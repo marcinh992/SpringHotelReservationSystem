@@ -200,12 +200,12 @@ tr:nth-child(odd) {
 /*Progress bar*/
 
 .step_progressbar{
-    position: relative;
+    position: absolute;
     display: block;
     width: 600px;
     /*top: -100%;*/
     left: 50%;
-    transform: translate(-50%, +100%);
+    transform: translate(-50%, 5%);
     background: rgba(0,0,0,0.6);
     border-radius: 10px;
 }
