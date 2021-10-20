@@ -10,7 +10,6 @@ import pl.overlook.springhotelreservation.domain.reservation.Reservation;
 import pl.overlook.springhotelreservation.domain.reservation.ReservationService;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

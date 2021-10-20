@@ -5,7 +5,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.overlook.springhotelreservation.domain.guest.Guest;
 import pl.overlook.springhotelreservation.domain.guest.GuestService;
-import pl.overlook.springhotelreservation.domain.reservation.Reservation;
 import pl.overlook.springhotelreservation.domain.reservation.ReservationService;
 import pl.overlook.springhotelreservation.domain.room.BedType;
 import pl.overlook.springhotelreservation.domain.room.Room;
@@ -13,9 +12,7 @@ import pl.overlook.springhotelreservation.domain.room.RoomService;
 import pl.overlook.springhotelreservation.domain.room.RoomType;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 @Component

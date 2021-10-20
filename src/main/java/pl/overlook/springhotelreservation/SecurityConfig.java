@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,7 +23,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 
 
-    // only for testing POST via REST api disabled csrf   !!  //TODO REMEMBER TO ENABLE SECURITY BEFORE DEPLOY !!
+  //TODO ONLY FOR TESTING PURPOSE SPRING SECURITY IS DISABLED
+
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers("/resources/**").anyRequest();
+//    }
+
+
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{

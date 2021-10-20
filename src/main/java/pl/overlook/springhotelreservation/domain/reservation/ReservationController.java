@@ -18,10 +18,7 @@ import pl.overlook.springhotelreservation.email.EmailService;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Controller
 public class ReservationController {
@@ -107,7 +104,7 @@ public class ReservationController {
 
     //Step 1 -start
     @GetMapping(value = "/guestreservation")
-    public String guestCreatingReservation() {
+    public String guestChoosingReservationDateAndRoomSize() {
 
         return "guestreservation";
     }
@@ -132,7 +129,7 @@ public class ReservationController {
 
     //Step 3
     @GetMapping("/reservation")
-    public String guestCreatingNewGuest(
+    public String guestProvidesPersonalData(
             @RequestParam Long room,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fromDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate toDate,
@@ -177,7 +174,7 @@ public class ReservationController {
     }
 
 
-    //step 5
+    //step 4
     @PostMapping("/confirmed")
     public String confirmToken(@RequestParam String token) {
 
