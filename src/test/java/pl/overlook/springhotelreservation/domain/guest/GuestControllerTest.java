@@ -64,16 +64,4 @@ class GuestControllerTest {
                 .andExpect(redirectedUrl("/guests"));
     }
 
-    @Test
-    public void handleEdit()throws Exception{
-
-        MockHttpServletRequestBuilder request=
-                get("/guestUpdateForm/1");
-
-        mockMvc.perform(request)
-                .andExpect(status().is2xxSuccessful());
-    }
-
-
-
 }
