@@ -13,8 +13,12 @@ import pl.overlook.springhotelreservation.domain.reservation.ReservationService;
 @ConditionalOnProperty(name = "scheduling.enabled", matchIfMissing = true)
 public class SchedulingConfig {
 
-    @Autowired
+    final
     ReservationService reservationService;
+
+    public SchedulingConfig(ReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
 
     @Scheduled(initialDelayString = "PT15M", fixedDelayString = "PT15M")
     void deleteUnconfirmedReservations() {

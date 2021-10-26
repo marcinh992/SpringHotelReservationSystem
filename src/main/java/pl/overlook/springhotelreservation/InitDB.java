@@ -50,15 +50,15 @@ public class InitDB implements CommandLineRunner {
         Room room1 = new Room(51, bedsForRoom1, RoomType.STANDARD, true);
         Room room2 = new Room(52, bedsForRoom2, RoomType.LUXURY, false);
         Room room3 = new Room(53, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room4 = new Room(55, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room5 = new Room(58, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room6 = new Room(60, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room7 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room8 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room9 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room10 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room11 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room12 = new Room(65, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room4 = new Room(55, bedsForRoom2, RoomType.BUSINESS, true);
+        Room room5 = new Room(58, bedsForRoom1, RoomType.BUSINESS, true);
+        Room room6 = new Room(60, bedsForRoom1, RoomType.BUSINESS, true);
+        Room room7 = new Room(65, bedsForRoom2, RoomType.STANDARD, true);
+        Room room8 = new Room(66, bedsForRoom3, RoomType.PRESIDENTIAL, true);
+        Room room9 = new Room(67, bedsForRoom3, RoomType.BUSINESS, true);
+        Room room10 = new Room(68, bedsForRoom1, RoomType.STANDARD, true);
+        Room room11 = new Room(69, bedsForRoom3, RoomType.STANDARD, true);
+        Room room12 = new Room(70, bedsForRoom2, RoomType.BUSINESS, true);
 
         LocalDate firstGuestBirthDay = LocalDate.of(1970, 3, 1);
         LocalDate secondGuestBirthDay = LocalDate.of(1975, 8, 25);
@@ -66,18 +66,18 @@ public class InitDB implements CommandLineRunner {
 
         Guest guest1 = new Guest("Jack", "Torrance", firstGuestBirthDay);
         Guest guest2 = new Guest("Wendy", "Torrance", secondGuestBirthDay);
-        Guest guest3 = new Guest("Tony", "Stark", secondGuestBirthDay);
-        Guest guest4 = new Guest("Chris", "Jakiśtam", secondGuestBirthDay);
-        Guest guest5 = new Guest("Anoty", "Hopkins", secondGuestBirthDay);
-        Guest guest6 = new Guest("Marcin", "Pypeć", secondGuestBirthDay);
-        Guest guest7 = new Guest("Dariusz", "Szpakowski", secondGuestBirthDay);
+        Guest guest3 = new Guest("Tony", "Torrance", secondGuestBirthDay);
+        Guest guest4 = new Guest("Marcin", "Pypeć", secondGuestBirthDay);
+        Guest guest5 = new Guest("Norman", "Osborn", secondGuestBirthDay);
+        Guest guest6 = new Guest("Peter", "Parker", secondGuestBirthDay);
+        Guest guest7 = new Guest("Tony", "Stark", secondGuestBirthDay);
         Guest guest8 = new Guest("Roman", "Polański", secondGuestBirthDay);
-        Guest guest9 = new Guest("Artur", "Nowak", secondGuestBirthDay);
-        Guest guest10 = new Guest("Eliza", "Inna", secondGuestBirthDay);
-        Guest guest11 = new Guest("Marta", "Takatam", secondGuestBirthDay);
-        Guest guest12 = new Guest("Agata", "Jeszczeinna", secondGuestBirthDay);
-        Guest guest13 = new Guest("Agnieszka", "Niewiem", secondGuestBirthDay);
-        Guest guest14 = new Guest("Romualda", "Kijwie", secondGuestBirthDay);
+        Guest guest9 = new Guest("Bruce", "Banner", secondGuestBirthDay);
+        Guest guest10 = new Guest("Eddie", "Brock", secondGuestBirthDay);
+        Guest guest11 = new Guest("Frank", "Castle", secondGuestBirthDay);
+        Guest guest12 = new Guest("Steve", "Rogers", secondGuestBirthDay);
+        Guest guest13 = new Guest("Stephen", "Strange", secondGuestBirthDay);
+        Guest guest14 = new Guest("Stan", "Lee", secondGuestBirthDay);
 
 
 
