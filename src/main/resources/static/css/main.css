@@ -271,11 +271,11 @@ footer {
 }
 
 
-article{
+article {
     background-color: #fffee8;
 }
 
-.container1, .container3{
+.container1, .container3 {
     margin: auto auto;
     width: 50%;
     /*padding-top: 10px;*/
@@ -283,19 +283,19 @@ article{
     font-size: 20px;
 }
 
-.container1 img, .container3 img{
+.container1 img, .container3 img {
     float: left;
     width: 400px;
     height: 360px;
     padding: 0 10px 0 0;
 }
 
-.container1 .textPanorama, .container3 .textPanorama3{
+.container1 .textPanorama, .container3 .textPanorama3 {
     text-align: justify;
 
 }
 
-.container2, .container4{
+.container2, .container4 {
     margin: auto auto;
     width: 50%;
     padding: 7%;
@@ -303,15 +303,25 @@ article{
 
 }
 
-.container2 img, .container4 img{
+.container2 img, .container4 img {
     float: right;
     width: 400px;
     height: 360px;
     padding: 0 0 0 10px;
 }
 
-.container2 .textPanorama2, .container4 .textPanorama4{
+.container2 .textPanorama2, .container4 .textPanorama4 {
     text-align: justify;
+}
+
+iframe {
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.video{
+    background-color: #fffee8;
+    color:#fffee8 ;
 }
 
 
