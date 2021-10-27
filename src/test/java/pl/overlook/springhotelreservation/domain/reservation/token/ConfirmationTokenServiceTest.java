@@ -16,8 +16,8 @@ class ConfirmationTokenServiceTest {
     public void shouldCreateToken(){
 
         //given
-        LocalDate start = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()+2);
-        LocalDate end = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()+5);
+        LocalDate start = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        LocalDate end = LocalDate.of(LocalDate.now().getYear()+1, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
         Reservation reservation = new Reservation(start, end);
 
         //when
@@ -32,8 +32,8 @@ class ConfirmationTokenServiceTest {
     public void shouldReservationInTokenBeEqualToReservationInMethodParameter(){
 
         //given
-        LocalDate start = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()+2);
-        LocalDate end = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()+5);
+        LocalDate start = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        LocalDate end = LocalDate.of(LocalDate.now().getYear()+1, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
         Reservation reservation = new Reservation(start, end);
 
         //when
@@ -78,8 +78,8 @@ class ConfirmationTokenServiceTest {
     public void newlyCreatedTokenShouldNotBeConfirmed(){
 
         //given
-        LocalDate start = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()+2);
-        LocalDate end = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()+5);
+        LocalDate start = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        LocalDate end = LocalDate.of(LocalDate.now().getYear() +1, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
         Reservation reservation = new Reservation(start, end);
 
         //when

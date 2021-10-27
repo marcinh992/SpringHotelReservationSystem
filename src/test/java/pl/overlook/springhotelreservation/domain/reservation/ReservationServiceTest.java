@@ -48,8 +48,8 @@ class ReservationServiceTest {
         beds1.add(BedType.SINGLE);
         Room room1 = new Room(1, beds1, RoomType.STANDARD, false);
 
-        LocalDate fromDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() + 5);
-        LocalDate toDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() + 2);
+        LocalDate fromDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        LocalDate toDate = LocalDate.of(LocalDate.now().getYear()+1, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
 
         Reservation reservation = new Reservation(room1, fromDate, toDate, LocalDateTime.now(), false);
 
