@@ -48,8 +48,8 @@ class ReservationServiceTest {
         beds1.add(BedType.SINGLE);
         Room room1 = new Room(1, beds1, RoomType.STANDARD, false);
 
-        LocalDate fromDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
-        LocalDate toDate = LocalDate.of(LocalDate.now().getYear()+1, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        LocalDate fromDate = LocalDate.of(LocalDate.now().getYear()+1, LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        LocalDate toDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
 
         Reservation reservation = new Reservation(room1, fromDate, toDate, LocalDateTime.now(), false);
 
@@ -70,7 +70,7 @@ class ReservationServiceTest {
         Room room1 = new Room(1, beds1, RoomType.STANDARD, false);
 
         LocalDate fromDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() +1);
-        LocalDate toDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() + 5);
+        LocalDate toDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() + 2);
 
         Reservation reservation = new Reservation(room1, fromDate, toDate, LocalDateTime.now().minusHours(1), false);
         List<Reservation> reservations = new ArrayList<>();
@@ -92,7 +92,7 @@ class ReservationServiceTest {
         Room room1 = new Room(1, beds1, RoomType.STANDARD, false);
 
         LocalDate fromDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() +1);
-        LocalDate toDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() + 5);
+        LocalDate toDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() + 2);
 
         Reservation reservation = new Reservation(room1, fromDate, toDate, LocalDateTime.now().minusHours(1), true);
         List<Reservation> reservations = new ArrayList<>();
@@ -115,7 +115,7 @@ class ReservationServiceTest {
         Room room1 = new Room(1, beds1, RoomType.STANDARD, false);
 
         LocalDate fromDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() +1);
-        LocalDate toDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() + 5);
+        LocalDate toDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth() + 2);
 
         int minutesAfterCreation = Utils.MINUTES_AFTER_DELETE_UNCONFIRMED_RESERVATION/2;
 
