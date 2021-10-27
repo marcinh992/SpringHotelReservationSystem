@@ -19,6 +19,7 @@
 
     <form th:object="${guest}" th:action="@{/guests}" th:method="post">
 
+        <input type="hidden" th:field="*{id}"/>
 
         <div class="txt_field">
             <input type="text" class="form-control" th:field="*{firstName}" placeholder="Imie"/>
