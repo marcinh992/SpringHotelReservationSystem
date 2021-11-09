@@ -53,15 +53,4 @@ class GuestControllerTest {
         .andExpect(status().is2xxSuccessful());
     }
 
-    @Test
-    public void handleDelete() throws Exception{
-
-        MockHttpServletRequestBuilder request=
-                get("/guest/delete/1");
-
-        mockMvc.perform(request)
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/guests"));
-    }
-
 }
