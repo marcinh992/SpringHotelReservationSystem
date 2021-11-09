@@ -34,9 +34,41 @@ public class InitDB implements CommandLineRunner {
 
         System.out.println("INIT GUEST AND ROOM DATABASE");
 
-        List<BedType> bedsForRoom1 = new ArrayList<>();
-        bedsForRoom1.add(BedType.SINGLE);
-        bedsForRoom1.add(BedType.DOUBLE);
+        List<BedType> bedsForOne = new ArrayList<>();
+        bedsForOne.add(BedType.SINGLE);
+
+        List<BedType> bedsForTwoV1 = new ArrayList<>();
+        bedsForTwoV1.add(BedType.DOUBLE);
+
+        List<BedType> bedsForTwoV2 = new ArrayList<>();
+        bedsForTwoV2.add(BedType.SINGLE);
+        bedsForTwoV2.add(BedType.SINGLE);
+
+        List<BedType> bedsForThree = new ArrayList<>();
+        bedsForThree.add(BedType.SINGLE);
+        bedsForThree.add(BedType.DOUBLE);
+
+        List<BedType> bedsForFour = new ArrayList<>();
+        bedsForFour.add(BedType.DOUBLE);
+        bedsForFour.add(BedType.DOUBLE);
+
+        List<BedType> bedsForFive = new ArrayList<>();
+        bedsForFive.add(BedType.DOUBLE);
+        bedsForFive.add(BedType.DOUBLE);
+        bedsForFive.add(BedType.SINGLE);
+
+        List<BedType> bedsForSix = new ArrayList<>();
+        bedsForSix.add(BedType.DOUBLE);
+        bedsForSix.add(BedType.DOUBLE);
+        bedsForSix.add(BedType.DOUBLE);
+
+
+        List<BedType> bedsForSingleReservation = new ArrayList<>();
+        bedsForSingleReservation.add(BedType.SINGLE);
+
+        List<BedType> bedsForTwo = new ArrayList<>();
+        bedsForTwo.add(BedType.SINGLE);
+        bedsForTwo.add(BedType.SINGLE);
 
 
         List<BedType> bedsForRoom2 = new ArrayList<>();
@@ -47,18 +79,42 @@ public class InitDB implements CommandLineRunner {
         bedsForRoom3.add(BedType.DOUBLE);
         bedsForRoom3.add(BedType.DOUBLE);
 
-        Room room1 = new Room(51, bedsForRoom1, RoomType.STANDARD, true);
-        Room room2 = new Room(52, bedsForRoom2, RoomType.LUXURY, false);
-        Room room3 = new Room(53, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room4 = new Room(55, bedsForRoom2, RoomType.BUSINESS, true);
-        Room room5 = new Room(58, bedsForRoom1, RoomType.BUSINESS, true);
-        Room room6 = new Room(60, bedsForRoom1, RoomType.BUSINESS, true);
-        Room room7 = new Room(65, bedsForRoom2, RoomType.STANDARD, true);
-        Room room8 = new Room(66, bedsForRoom3, RoomType.PRESIDENTIAL, true);
-        Room room9 = new Room(67, bedsForRoom3, RoomType.BUSINESS, true);
-        Room room10 = new Room(68, bedsForRoom1, RoomType.STANDARD, true);
-        Room room11 = new Room(69, bedsForRoom3, RoomType.STANDARD, true);
-        Room room12 = new Room(70, bedsForRoom2, RoomType.BUSINESS, true);
+        for (int i = 1; i <= 8; i++) {
+            Room room = new Room(i,bedsForOne, RoomType.STANDARD, false);
+            roomService.createNewRoom(room);
+        }
+
+        for (int i = 9; i <=14 ; i++) {
+            Room room = new Room(i, bedsForTwoV1, RoomType.LUXURY, true);
+            roomService.createNewRoom(room);
+        }
+
+        for (int i = 15; i <=18 ; i++) {
+            Room room = new Room(i, bedsForTwoV2, RoomType.LUXURY, true);
+            roomService.createNewRoom(room);
+        }
+
+        for (int i = 19; i <= 27 ; i++) {
+            Room room = new Room(i,bedsForThree, RoomType.STANDARD, true);
+            roomService.createNewRoom(room);
+        }
+
+        for (int i = 28; i <= 36; i++) {
+            Room room = new Room(i, bedsForFour, RoomType.BUSINESS, false);
+            roomService.createNewRoom(room);
+        }
+
+        for (int i = 37; i <= 45 ; i++) {
+            Room room = new Room(i, bedsForFive, RoomType.STANDARD, true);
+            roomService.createNewRoom(room);
+        }
+
+        for (int i = 46; i <=54 ; i++) {
+            Room room = new Room(i, bedsForSix, RoomType.LUXURY, true);
+            roomService.createNewRoom(room);
+        }
+
+
 
         LocalDate firstGuestBirthDay = LocalDate.of(1970, 3, 1);
         LocalDate secondGuestBirthDay = LocalDate.of(1975, 8, 25);
@@ -79,9 +135,6 @@ public class InitDB implements CommandLineRunner {
         Guest guest13 = new Guest("Stephen", "Strange", secondGuestBirthDay);
         Guest guest14 = new Guest("Stan", "Lee", secondGuestBirthDay);
 
-
-
-
         guestService.createNewGuest(guest1);
         guestService.createNewGuest(guest2);
         guestService.createNewGuest(guest3);
@@ -96,36 +149,5 @@ public class InitDB implements CommandLineRunner {
         guestService.createNewGuest(guest12);
         guestService.createNewGuest(guest13);
         guestService.createNewGuest(guest14);
-
-        roomService.createNewRoom(room1);
-        roomService.createNewRoom(room2);
-        roomService.createNewRoom(room3);
-        roomService.createNewRoom(room4);
-        roomService.createNewRoom(room5);
-        roomService.createNewRoom(room6);
-        roomService.createNewRoom(room7);
-        roomService.createNewRoom(room8);
-        roomService.createNewRoom(room9);
-        roomService.createNewRoom(room10);
-        roomService.createNewRoom(room11);
-        roomService.createNewRoom(room12);
-
-//        LocalDate firstReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 1);
-//        LocalDate secondReservationStartDate = LocalDate.of(2021, Calendar.NOVEMBER, 2);
-//
-//        LocalDate firstReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 7);
-//        LocalDate secondReservationEndDate = LocalDate.of(2021, Calendar.NOVEMBER, 8);
-//
-//        Reservation firstReservation = new Reservation(room1, guest1, firstReservationStartDate, firstReservationEndDate, LocalDateTime.now());
-//        Reservation secondReservation = new Reservation(room2, guest2, secondReservationStartDate, secondReservationEndDate, LocalDateTime.now());
-//
-//        reservationService.createNewReservation(firstReservation);
-//        reservationService.createNewReservation(secondReservation);
-
-
-        System.out.println("Current guest count: " + guestService.getAllGuests().size());
-        System.out.println("Current room count: " + roomService.getAllRooms().size());
-        System.out.println("Current reservation count: " + reservationService.getAllReservations().size());
-
     }
 }
